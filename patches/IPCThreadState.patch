@@ -1,0 +1,38 @@
+--- a/frameworks/native/libs/binder/IPCThreadState.cpp
++++ b/frameworks/native/libs/binder/IPCThreadState.cpp
+@@ -1024,7 +1024,7 @@
+         IF_LOG_COMMANDS() {
+             alog << "About to read/write, write size = " << mOut.dataSize() << endl;
+         }
+-#if defined(__ANDROID__)
++#if defined(__ANDROID__) || defined(BINDER_ENABLE_KERNEL_IPC)
+         if (ioctl(mProcess->mDriverFD, BINDER_WRITE_READ, &bwr) >= 0)
+             err = NO_ERROR;
+         else
+@@ -1373,7 +1373,7 @@
+         IPCThreadState* const self = static_cast<IPCThreadState*>(st);
+         if (self) {
+                 self->flushCommands();
+-#if defined(__ANDROID__)
++#if defined(__ANDROID__) || defined(BINDER_ENABLE_KERNEL_IPC)
+         if (self->mProcess->mDriverFD >= 0) {
+             ioctl(self->mProcess->mDriverFD, BINDER_THREAD_EXIT, 0);
+         }
+@@ -1388,7 +1388,7 @@
+     binder_frozen_status_info info;
+     info.pid = pid;
+ 
+-#if defined(__ANDROID__)
++#if defined(__ANDROID__) || defined(BINDER_ENABLE_KERNEL_IPC)
+     if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_FROZEN_INFO, &info) < 0)
+         ret = -errno;
+ #endif
+@@ -1407,7 +1407,7 @@
+     info.timeout_ms = timeout_ms;
+ 
+ 
+-#if defined(__ANDROID__)
++#if defined(__ANDROID__) || defined(BINDER_ENABLE_KERNEL_IPC)
+     if (ioctl(self()->mProcess->mDriverFD, BINDER_FREEZE, &info) < 0)
+         ret = -errno;
+ #endif

@@ -1,0 +1,51 @@
+--- a/frameworks/native/libs/binder/ProcessState.cpp
++++ b/frameworks/native/libs/binder/ProcessState.cpp
+@@ -145,6 +145,24 @@
+     }
+ }
+ 
++#if defined(BINDER_ENABLE_KERNEL_IPC) && !defined(__ANDROID__)
++// LOCAL PATCH (see PATCHES.md).
++//
++// BINDER_SET_CONTEXT_MGR_EXT asks the driver to attach the caller's SELinux
++// context to every transaction.  On a kernel without SELinux -- the normal case
++// for a desktop distro or a container host running AppArmor -- the ioctl still
++// succeeds, but each later transaction dies inside the driver with
++// "failed to get security context" / -EINVAL.  The failure is therefore not
++// visible through the existing fallback, which only triggers on ioctl error.
++//
++// Probing for SELinux up front keeps upstream behaviour where SELinux exists
++// and selects the legacy ioctl (which requests no security context) where it
++// does not.
++static bool kernelHasSelinux() {
++    return access("/sys/fs/selinux", F_OK) == 0;
++}
++#endif
++
+ bool ProcessState::becomeContextManager()
+ {
+     AutoMutex _l(mLock);
+@@ -153,7 +171,13 @@
+         .flags = FLAT_BINDER_FLAG_TXN_SECURITY_CTX,
+     };
+ 
+-    int result = ioctl(mDriverFD, BINDER_SET_CONTEXT_MGR_EXT, &obj);
++    int result = -1;
++#if defined(BINDER_ENABLE_KERNEL_IPC) && !defined(__ANDROID__)
++    if (kernelHasSelinux())
++#endif
++    {
++        result = ioctl(mDriverFD, BINDER_SET_CONTEXT_MGR_EXT, &obj);
++    }
+ 
+     // fallback to original method
+     if (result != 0) {
+@@ -435,7 +459,7 @@
+         }
+     }
+ 
+-#ifdef __ANDROID__
++#if defined(__ANDROID__) || defined(BINDER_ENABLE_KERNEL_IPC)
+     LOG_ALWAYS_FATAL_IF(mDriverFD < 0, "Binder driver '%s' could not be opened.  Terminating.", driver);
+ #endif
+ }
