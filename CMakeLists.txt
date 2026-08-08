@@ -70,8 +70,7 @@ How to fix, pick one:
   2. Select it explicitly:
          cmake -S . -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
 
-  3. Skip the host toolchain entirely and build in Docker:
-         scripts/run.sh
+  3. Let scripts/run.sh configure the build for you; it pins clang.
 ]])
   message(FATAL_ERROR "${_msg}")
 endif()
@@ -332,16 +331,31 @@ target_include_directories(binderfs_ctl PRIVATE ${AOSP}/bionic/libc/kernel/uapi)
 add_subdirectory(examples)
 
 # ===========================================================================
-# binder_demo -- the demo entry point (main.cpp)
+# demo_support -- finding the companion binaries and fork/exec/wait.
+#
+# Shared by binder_demo and demo_service (which starts servicemanager itself
+# when none is running). No binder dependency: it is plain POSIX.
+# ===========================================================================
+add_library(demo_support STATIC
+  demo/binary_paths.cpp
+  demo/child_process.cpp
+)
+target_include_directories(demo_support PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+# ===========================================================================
+# binder_demo -- the demo entry point (main.cpp + demo/)
 #
 # Spawns servicemanager and demo_service, then runs demo_client against them.
-# It only fork/execs, so it links nothing; the dependency is just build order.
+# It only fork/execs, so it links no binder code; the dependency on the other
+# targets is just build order.
 # ===========================================================================
-add_executable(binder_demo main.cpp)
+add_executable(binder_demo main.cpp demo/runner.cpp)
+target_link_libraries(binder_demo PRIVATE demo_support)
 add_dependencies(binder_demo servicemanager demo_service demo_client)
 
 # ===========================================================================
-# Install layout used by the Docker image
+# Install layout for `cmake --install` (optional -- the demo also runs straight
+# out of the build tree)
 # ===========================================================================
 install(TARGETS servicemanager binderfs_ctl RUNTIME DESTINATION bin)
 install(TARGETS demo_service demo_client RUNTIME DESTINATION bin)

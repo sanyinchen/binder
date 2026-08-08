@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# One-time host setup so binder_demo can run directly (from CLion, a debugger,
-# or the shell) without Docker.
+# One-time host setup so binder_demo can run (from scripts/run.sh, CLion, a
+# debugger, or the shell).
 #
-#   sudo scripts/setup-binder-host.sh
+#   sudo scripts/setup-binder-host.sh [--build-dir DIR]
 #
 # Loads binder_linux, mounts binderfs, creates the binder devices and makes them
 # world-accessible so your normal user can open them -- the same 0666 mode
@@ -21,13 +21,23 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 log() { printf '\033[1;34m[setup]\033[0m %s\n' "$*"; }
 err() { printf '\033[1;31m[setup]\033[0m %s\n' "$*" >&2; }
 
+BUILD_DIR=""
+TEARDOWN=0
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --teardown)  TEARDOWN=1; shift ;;
+        --build-dir) BUILD_DIR=${2:-}; shift 2 ;;
+        *)           err "unknown argument: $1"; exit 2 ;;
+    esac
+done
+
 if [ "$(id -u)" -ne 0 ]; then
-    err "must run as root:  sudo $0 $*"
+    err "must run as root:  sudo $0"
     exit 1
 fi
 
 # --------------------------------------------------------------------------
-if [ "${1:-}" = "--teardown" ]; then
+if [ "$TEARDOWN" = 1 ]; then
     for d in "${DEVICES[@]}"; do rm -f "/dev/$d"; done
     if mountpoint -q "$BINDERFS_MNT"; then
         umount "$BINDERFS_MNT"
@@ -42,15 +52,17 @@ fi
 # binderfs_ctl is built by the project; find it in either build layout.
 CTL=""
 for candidate in \
-    "$REPO_ROOT/cmake-build-debug/binderfs_ctl" \
+    ${BUILD_DIR:+"$BUILD_DIR/binderfs_ctl"} \
     "$REPO_ROOT/build/binderfs_ctl" \
+    "$REPO_ROOT/cmake-build-debug/binderfs_ctl" \
     "$REPO_ROOT/cmake-build-release/binderfs_ctl"; do
     if [ -x "$candidate" ]; then CTL="$candidate"; break; fi
 done
 
 if [ -z "$CTL" ]; then
     err "binderfs_ctl not found -- build the project first, e.g."
-    err "  cmake --build cmake-build-debug --target binderfs_ctl"
+    err "  cmake --build build --target binderfs_ctl"
+    err "or just use scripts/run.sh, which builds it for you."
     exit 1
 fi
 log "using $CTL"
@@ -89,4 +101,4 @@ done
 log "ready:"
 ls -lL /dev/binder /dev/hwbinder /dev/vndbinder | sed 's/^/         /'
 echo
-log "you can now run:  $REPO_ROOT/cmake-build-debug/binder_demo"
+log "you can now run:  $(dirname "$CTL")/binder_demo"

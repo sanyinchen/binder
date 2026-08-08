@@ -1,5 +1,5 @@
 /*
- * Permissive libselinux implementation for the Docker runtime.
+ * Permissive libselinux implementation for this host runtime.
  *
  * See compat/include/selinux/selinux.h for the rationale and the security
  * caveat: every access check is answered "allow".

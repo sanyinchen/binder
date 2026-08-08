@@ -8,10 +8,16 @@
  *   defaultServiceManager()       binder handle 0, i.e. servicemanager
  *   addService(name, this)        publishes us in servicemanager's registry
  *   startThreadPool()/joinThreadPool()  serves incoming transactions
+ *
+ * If no servicemanager is running this starts one, so the service is usable on
+ * its own (from CLion, say) and not only under binder_demo.
  */
 
 #include <com/example/demo/BnDemoService.h>
 #include <com/example/demo/IDemoCallback.h>
+
+#include "demo/binary_paths.h"
+#include "demo/child_process.h"
 
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
@@ -20,6 +26,7 @@
 #include <utils/String16.h>
 
 #include <algorithm>
+#include <csignal>
 #include <cstdio>
 #include <cstdlib>
 #include <mutex>
@@ -157,6 +164,71 @@ private:
     std::atomic<int32_t> mCount{0};
 };
 
+// -------------------------------------------------------------------------
+// Bringing up servicemanager
+//
+// defaultServiceManager() never fails when servicemanager is missing -- it
+// retries forever, logging "Waiting 1s on context object". getContextObject()
+// is the same lookup without the loop, so it works as a one-shot probe: it
+// pings binder handle 0 and returns null when nobody holds it.
+// -------------------------------------------------------------------------
+
+// Only set when *we* started it; a servicemanager that was already running
+// belongs to someone else and must outlive us.
+pid_t gSpawnedServiceManager = -1;
+
+bool serviceManagerIsUp() {
+    return ProcessState::self()->getContextObject(nullptr) != nullptr;
+}
+
+void stopSpawnedServiceManager() {
+    demo::terminate(gSpawnedServiceManager);
+}
+
+void onSignal(int sig) {
+    stopSpawnedServiceManager();
+    _exit(128 + sig);
+}
+
+bool ensureServiceManager() {
+    if (serviceManagerIsUp()) return true;
+
+    const std::string path = demo::findBinary("servicemanager");
+    if (path.empty()) {
+        fprintf(stderr, "[service] no servicemanager running, and none found to start\n");
+        return false;
+    }
+
+    printf("[service] no servicemanager running -- starting %s\n", path.c_str());
+    fflush(stdout);
+
+    gSpawnedServiceManager = demo::spawn(path);
+    if (gSpawnedServiceManager < 0) return false;
+
+    // We own it now: don't leave it behind on exit or on Ctrl+C.
+    atexit(stopSpawnedServiceManager);
+    signal(SIGINT, onSignal);
+    signal(SIGTERM, onSignal);
+
+    for (int i = 0; i < 20; ++i) { // 5s, well past the ~100ms it usually takes
+        usleep(250 * 1000);
+        if (!demo::stillAlive(gSpawnedServiceManager)) {
+            fprintf(stderr, "[service] servicemanager exited immediately\n");
+            gSpawnedServiceManager = -1; // already reaped
+            return false;
+        }
+        if (serviceManagerIsUp()) {
+            printf("[service] servicemanager running (pid %d)\n", gSpawnedServiceManager);
+            fflush(stdout);
+            return true;
+        }
+    }
+
+    fprintf(stderr, "[service] servicemanager did not come up within 5s\n");
+    stopSpawnedServiceManager();
+    return false;
+}
+
 } // namespace
 
 int main() {
@@ -166,11 +238,9 @@ int main() {
 
     sp<DemoService> service = sp<DemoService>::make();
 
+    if (!ensureServiceManager()) return 1;
+
     auto sm = android::defaultServiceManager();
-    if (sm == nullptr) {
-        fprintf(stderr, "[service] no servicemanager -- is it running?\n");
-        return 1;
-    }
 
     const auto status = sm->addService(String16(kServiceName), service);
     if (status != OK) {

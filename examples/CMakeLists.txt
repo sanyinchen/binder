@@ -32,8 +32,10 @@ add_library(demo_aidl STATIC ${DEMO_AIDL_GENERATED})
 target_include_directories(demo_aidl PUBLIC ${AIDL_OUT})
 target_link_libraries(demo_aidl PUBLIC binder utils base)
 
+# demo_support: demo_service starts servicemanager itself if none is running.
 add_executable(demo_service demo_service.cpp)
-target_link_libraries(demo_service PRIVATE demo_aidl binder utils cutils log base)
+target_link_libraries(demo_service PRIVATE demo_aidl binder utils cutils log base demo_support)
+add_dependencies(demo_service servicemanager)
 
 add_executable(demo_client demo_client.cpp)
 target_link_libraries(demo_client PRIVATE demo_aidl binder utils cutils log base)

@@ -1,9 +1,10 @@
 /*
  * Host compatibility shim for libselinux.
  *
- * The container this project runs in has no SELinux policy loaded, so there is
- * nothing meaningful to enforce.  This shim provides the exact API surface that
- * servicemanager's Access.cpp uses and answers every access check with "allow".
+ * The desktop kernels this project runs on have no SELinux policy loaded, so
+ * there is nothing meaningful to enforce.  This shim provides the exact API
+ * surface that servicemanager's Access.cpp uses and answers every access check
+ * with "allow".
  *
  * Security note: this makes servicemanager's per-service SELinux gating a no-op.
  * That matches the environment (no policy, no contexts), but it means the

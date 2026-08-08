@@ -1,5 +1,5 @@
 /*
- * Minimal libvintf replacement for the Docker runtime.
+ * Minimal libvintf replacement for this host runtime.
  *
  * Real libvintf parses device/framework VINTF XML manifests and pulls in
  * tinyxml2, libhidlmetadata, libfs_mgr and friends.  servicemanager only needs

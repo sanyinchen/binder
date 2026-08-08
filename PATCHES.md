@@ -26,7 +26,7 @@
 
 **b. `becomeContextManager()` 在使用扩展 ioctl 前先探测 SELinux。**
 
-这一处是真正的行为修复，不只是构建开关。`BINDER_SET_CONTEXT_MGR_EXT` 会设置 `FLAT_BINDER_FLAG_TXN_SECURITY_CTX`，要求驱动给每一次事务附加调用方的 SELinux 上下文。在没有 SELinux 的内核上——普通桌面发行版，或跑 AppArmor 的容器宿主，这是常态——这个 ioctl **本身是成功的**，然后之后每一次事务都会在驱动内部失败：
+这一处是真正的行为修复，不只是构建开关。`BINDER_SET_CONTEXT_MGR_EXT` 会设置 `FLAT_BINDER_FLAG_TXN_SECURITY_CTX`，要求驱动给每一次事务附加调用方的 SELinux 上下文。在没有 SELinux 的内核上——普通桌面发行版、跑 AppArmor 的 Ubuntu 之类，这是常态——这个 ioctl **本身是成功的**，然后之后每一次事务都会在驱动内部失败：
 
 ```
 binder_linux: 31365:31365 failed to get security context
@@ -41,7 +41,7 @@ binder_linux: 31365:31365 transaction call to 31363:0 failed 14/29201/-22, code 
 
 ## `libselinux` → `compat/selinux_stub.cpp`
 
-servicemanager 的每一次 add/find/list 都要过 SELinux。容器里没有加载任何策略，所以这个替代实现对所有检查一律回答**放行**，并发放同一个合成上下文。
+servicemanager 的每一次 add/find/list 都要过 SELinux。普通桌面内核上没有加载任何策略，所以这个替代实现对所有检查一律回答**放行**，并发放同一个合成上下文。
 
 > **安全提示：** AOSP 原本强制的按服务访问控制在这里是空操作。对于一个没有加载策略的内核来说这是正确的，但**这不是真机 Android 的安全姿态**。设置 `BINDER_SELINUX_LOG_CHECKS=1` 可以追踪本应被评估的每一次检查。
 

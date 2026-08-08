@@ -68,11 +68,16 @@ int main() {
     // Needed so the service can call back into this process.
     ps->startThreadPool();
 
+    // servicemanager *is* binder handle 0, so there is nothing to talk to until
+    // it runs. defaultServiceManager() does not fail in that case -- it retries
+    // forever, logging "Waiting 1s on context object on /dev/binder" -- so say
+    // up front what that loop would mean. Unlike demo_service the client does
+    // not start anything itself: it needs demo.service too, and demo_service
+    // brings up servicemanager on its own.
+    printf("[client] connecting to servicemanager"
+           " (if this waits, start the service first: scripts/run.sh service)\n");
+    fflush(stdout);
     auto sm = android::defaultServiceManager();
-    if (sm == nullptr) {
-        fprintf(stderr, "[client] no servicemanager -- is it running?\n");
-        return 1;
-    }
 
     section("servicemanager: list registered services");
     for (const String16& name : sm->listServices()) {

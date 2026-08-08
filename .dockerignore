@@ -1,7 +1,0 @@
-build/
-build-*/
-cmake-build-*/
-.idea/
-.git/
-*.o
-*.a
