@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 #
 # Build the project on this machine, make sure the binder driver is up, then
-# run the demo.
+# bring the services up.
 #
-#   scripts/run.sh                 # end-to-end demo
-#   scripts/run.sh servicemanager  # just servicemanager, in the foreground
-#   scripts/run.sh service         # just the demo service, in the foreground
-#   scripts/run.sh client          # just the demo client, once
+#   scripts/run.sh                      # servicemanager + http + download services
+#   scripts/run.sh servicemanager       # just servicemanager, in the foreground
+#   scripts/run.sh http                 # just the http service, in the foreground
+#   scripts/run.sh download             # just the download service, in the foreground
+#   scripts/run.sh client <url> [path]  # run the download client once
+#
+# The services are long-lived; Ctrl+C stops them. The client wants a second
+# terminal:
+#
+#   terminal A: scripts/run.sh
+#   terminal B: scripts/run.sh client https://example.com/file.bin
 #
 # The binder driver is a host kernel component (CONFIG_ANDROID_BINDER_IPC +
 # CONFIG_ANDROID_BINDERFS). If /dev/binder is missing this calls
 # scripts/setup-binder-host.sh through sudo to load the module, mount binderfs
-# and create the devices; that part needs root, the demo itself does not.
+# and create the devices; that part needs root, the services do not.
 #
 # Environment:
 #   BUILD_DIR   build tree to use   (default: <repo>/build)
@@ -76,7 +83,7 @@ fi
 
 log "building"
 cmake --build "$BUILD_DIR" -j "$(nproc)" --target \
-    binder_demo servicemanager demo_service demo_client binderfs_ctl
+    service_manager download_client servicemanager binderfs_ctl
 
 # --------------------------------------------------------------------------
 # 2. binder driver
@@ -89,7 +96,22 @@ fi
 # --------------------------------------------------------------------------
 # 3. run
 #
-# binder_demo finds its companion binaries next to itself, so every mode goes
-# through it -- no separate paths to keep in sync.
+# Every mode but the client goes through service_manager, so there is no second
+# set of paths to keep in sync.
 # --------------------------------------------------------------------------
-exec "$BUILD_DIR/binder_demo" "$@"
+MODE=${1:-all}
+shift || true
+
+case "$MODE" in
+    client)
+        exec "$BUILD_DIR/download_client" "$@"
+        ;;
+    all|http|download|servicemanager)
+        exec "$BUILD_DIR/service_manager" "$MODE" "$@"
+        ;;
+    *)
+        err "unknown mode: $MODE"
+        err "usage: scripts/run.sh [all|http|download|servicemanager|client <url> [path]]"
+        exit 2
+        ;;
+esac

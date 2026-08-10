@@ -93,6 +93,12 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
+# Every executable lands in the build root. service_manager fork/execs
+# servicemanager, and side by side it finds it "next to itself" -- which is also
+# the bin/ layout `cmake --install` produces, so build tree and install tree
+# share one lookup path.
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
 set(AOSP "${CMAKE_CURRENT_SOURCE_DIR}/external/android")
 set(GEN  "${CMAKE_CURRENT_SOURCE_DIR}/generated/aidl")
 set(COMPAT "${CMAKE_CURRENT_SOURCE_DIR}/compat")
@@ -326,37 +332,22 @@ add_executable(binderfs_ctl tools/binderfs_ctl.cpp)
 target_include_directories(binderfs_ctl PRIVATE ${AOSP}/bionic/libc/kernel/uapi)
 
 # ===========================================================================
-# Examples
-# ===========================================================================
-add_subdirectory(examples)
-
-# ===========================================================================
-# demo_support -- finding the companion binaries and fork/exec/wait.
+# The services and the client
 #
-# Shared by binder_demo and demo_service (which starts servicemanager itself
-# when none is running). No binder dependency: it is plain POSIX.
-# ===========================================================================
-add_library(demo_support STATIC
-  demo/binary_paths.cpp
-  demo/child_process.cpp
-)
-target_include_directories(demo_support PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-# ===========================================================================
-# binder_demo -- the demo entry point (main.cpp + demo/)
+#   service/  service_manager: launcher + http service + download service.
+#             Each service keeps its .aidl beside it (http/aidl/,
+#             download/aidl/); they build into one library, service_aidl,
+#             which the client links too.
+#   client/   download_client: downloads a file through download.service
 #
-# Spawns servicemanager and demo_service, then runs demo_client against them.
-# It only fork/execs, so it links no binder code; the dependency on the other
-# targets is just build order.
+# service/ comes first so service_aidl exists by the time client/ links it.
 # ===========================================================================
-add_executable(binder_demo main.cpp demo/runner.cpp)
-target_link_libraries(binder_demo PRIVATE demo_support)
-add_dependencies(binder_demo servicemanager demo_service demo_client)
+add_subdirectory(service)
+add_subdirectory(client)
 
 # ===========================================================================
-# Install layout for `cmake --install` (optional -- the demo also runs straight
-# out of the build tree)
+# Install layout for `cmake --install` (optional -- everything also runs
+# straight out of the build tree)
 # ===========================================================================
 install(TARGETS servicemanager binderfs_ctl RUNTIME DESTINATION bin)
-install(TARGETS demo_service demo_client RUNTIME DESTINATION bin)
-install(TARGETS binder_demo RUNTIME DESTINATION bin)
+install(TARGETS service_manager download_client RUNTIME DESTINATION bin)
