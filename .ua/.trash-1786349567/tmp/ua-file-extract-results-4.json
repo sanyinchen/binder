@@ -1,0 +1,1563 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 16,
+  "filesSkipped": [
+    "compat/CMakeLists.txt",
+    "examples/CMakeLists.txt",
+    "examples/aidl/com/example/demo/IDemoCallback.aidl",
+    "examples/aidl/com/example/demo/IDemoService.aidl",
+    "patches/IPCThreadState.patch",
+    "patches/ProcessState.patch"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 16,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 14,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": "compat/include/aosp_host_compat.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/selinux/android.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 14,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/selinux/avc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/selinux/label.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 19,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/selinux/selinux.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/stdatomic.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 94,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/include/vintf/VintfObject.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "ManifestInstance",
+          "startLine": 43,
+          "endLine": 48,
+          "params": [
+            "package",
+            "interface",
+            "instance",
+            "updatableViaApex"
+          ]
+        },
+        {
+          "name": "format",
+          "startLine": 50,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "updatableViaApex",
+          "startLine": 54,
+          "endLine": 54,
+          "params": []
+        },
+        {
+          "name": "add",
+          "startLine": 77,
+          "endLine": 77,
+          "params": [
+            "instance"
+          ]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ManifestInstance",
+          "startLine": 41,
+          "endLine": 61,
+          "methods": [
+            "ManifestInstance",
+            "format",
+            "updatableViaApex"
+          ],
+          "properties": [
+            "mPackage",
+            "mInterface",
+            "mInstance",
+            "mUpdatableViaApex"
+          ]
+        },
+        {
+          "name": "HalManifest",
+          "startLine": 63,
+          "endLine": 81,
+          "methods": [
+            "loadFrom",
+            "hasAidlInstance",
+            "getAidlInstances",
+            "forEachInstance",
+            "add"
+          ],
+          "properties": [
+            "mInstances"
+          ]
+        },
+        {
+          "name": "VintfObject",
+          "startLine": 83,
+          "endLine": 87,
+          "methods": [
+            "GetDeviceHalManifest",
+            "GetFrameworkHalManifest"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "ManifestInstance",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "format",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "updatableViaApex",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "ManifestInstance",
+          "line": 41,
+          "isDefault": false
+        },
+        {
+          "name": "loadFrom",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "hasAidlInstance",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "getAidlInstances",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "forEachInstance",
+          "line": 75,
+          "isDefault": false
+        },
+        {
+          "name": "add",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "HalManifest",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "GetDeviceHalManifest",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "GetFrameworkHalManifest",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "VintfObject",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ManifestInstance",
+          "callee": "std::move",
+          "lineNumber": 45
+        },
+        {
+          "caller": "ManifestInstance",
+          "callee": "std::move",
+          "lineNumber": 46
+        },
+        {
+          "caller": "ManifestInstance",
+          "callee": "std::move",
+          "lineNumber": 47
+        },
+        {
+          "caller": "ManifestInstance",
+          "callee": "std::move",
+          "lineNumber": 48
+        },
+        {
+          "caller": "add",
+          "callee": "push_back",
+          "lineNumber": 77
+        },
+        {
+          "caller": "add",
+          "callee": "std::move",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 13,
+        "functionCount": 4,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "compat/include/vintf/constants.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 15,
+      "nonEmptyLines": 11,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "compat/selinux_stub.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 116,
+      "functions": [
+        {
+          "name": "logChecks",
+          "startLine": 32,
+          "endLine": 38,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "selabel_handle_impl",
+          "startLine": 24,
+          "endLine": 26,
+          "methods": [],
+          "properties": [
+            "unused"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "selabel_handle_impl",
+          "line": 24,
+          "isDefault": false
+        },
+        {
+          "name": "logChecks",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "logChecks",
+          "callee": "[] {\n        const char* v = getenv(\"BINDER_SELINUX_LOG_CHECKS\");\n        return v != nullptr && v[0] == '1';\n    }",
+          "lineNumber": 33
+        },
+        {
+          "caller": "logChecks",
+          "callee": "getenv",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getcon",
+          "callee": "dupContext",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getpidcon",
+          "callee": "dupContext",
+          "lineNumber": 56
+        },
+        {
+          "caller": "freecon",
+          "callee": "free",
+          "lineNumber": 61
+        },
+        {
+          "caller": "selabel_lookup",
+          "callee": "dupContext",
+          "lineNumber": 99
+        },
+        {
+          "caller": "selinux_check_access",
+          "callee": "logChecks",
+          "lineNumber": 115
+        },
+        {
+          "caller": "selinux_check_access",
+          "callee": "fprintf",
+          "lineNumber": 116
+        },
+        {
+          "caller": "selinux_log_callback",
+          "callee": "logChecks",
+          "lineNumber": 124
+        },
+        {
+          "caller": "selinux_log_callback",
+          "callee": "va_start",
+          "lineNumber": 126
+        },
+        {
+          "caller": "selinux_log_callback",
+          "callee": "fprintf",
+          "lineNumber": 127
+        },
+        {
+          "caller": "selinux_log_callback",
+          "callee": "vfprintf",
+          "lineNumber": 128
+        },
+        {
+          "caller": "selinux_log_callback",
+          "callee": "va_end",
+          "lineNumber": 129
+        },
+        {
+          "caller": "selinux_vendor_log_callback",
+          "callee": "logChecks",
+          "lineNumber": 134
+        },
+        {
+          "caller": "selinux_vendor_log_callback",
+          "callee": "va_start",
+          "lineNumber": 136
+        },
+        {
+          "caller": "selinux_vendor_log_callback",
+          "callee": "fprintf",
+          "lineNumber": 137
+        },
+        {
+          "caller": "selinux_vendor_log_callback",
+          "callee": "vfprintf",
+          "lineNumber": 138
+        },
+        {
+          "caller": "selinux_vendor_log_callback",
+          "callee": "va_end",
+          "lineNumber": 139
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "compat/vintf_stub.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "trim",
+          "startLine": 15,
+          "endLine": 20,
+          "params": [
+            "s"
+          ]
+        },
+        {
+          "name": "parseLine",
+          "startLine": 23,
+          "endLine": 43,
+          "params": [
+            "line",
+            "out"
+          ]
+        },
+        {
+          "name": "loadFrom",
+          "startLine": 47,
+          "endLine": 64,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "hasAidlInstance",
+          "startLine": 66,
+          "endLine": 74,
+          "params": [
+            "package",
+            "interface",
+            "instance"
+          ]
+        },
+        {
+          "name": "getAidlInstances",
+          "startLine": 76,
+          "endLine": 85,
+          "params": [
+            "package",
+            "interface"
+          ]
+        },
+        {
+          "name": "forEachInstance",
+          "startLine": 87,
+          "endLine": 91,
+          "params": [
+            "func"
+          ]
+        },
+        {
+          "name": "GetDeviceHalManifest",
+          "startLine": 93,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "GetFrameworkHalManifest",
+          "startLine": 101,
+          "endLine": 105,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "trim",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "parseLine",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "loadFrom",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "hasAidlInstance",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "getAidlInstances",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "forEachInstance",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "GetDeviceHalManifest",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "GetFrameworkHalManifest",
+          "line": 101,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "trim",
+          "callee": "find_first_not_of",
+          "lineNumber": 16
+        },
+        {
+          "caller": "trim",
+          "callee": "find_last_not_of",
+          "lineNumber": 18
+        },
+        {
+          "caller": "trim",
+          "callee": "substr",
+          "lineNumber": 19
+        },
+        {
+          "caller": "parseLine",
+          "callee": "find",
+          "lineNumber": 24
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 27
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 28
+        },
+        {
+          "caller": "parseLine",
+          "callee": "find",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 33
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 34
+        },
+        {
+          "caller": "parseLine",
+          "callee": "rfind",
+          "lineNumber": 37
+        },
+        {
+          "caller": "parseLine",
+          "callee": "ManifestInstance",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parseLine",
+          "callee": "substr",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parseLine",
+          "callee": "std::move",
+          "lineNumber": 41
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "std::make_shared<HalManifest>",
+          "lineNumber": 48
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "std::getline",
+          "lineNumber": 54
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "trim",
+          "lineNumber": 55
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "empty",
+          "lineNumber": 56
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "parseLine",
+          "lineNumber": 59
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "add",
+          "lineNumber": 60
+        },
+        {
+          "caller": "loadFrom",
+          "callee": "std::move",
+          "lineNumber": 60
+        },
+        {
+          "caller": "hasAidlInstance",
+          "callee": "package",
+          "lineNumber": 69
+        },
+        {
+          "caller": "hasAidlInstance",
+          "callee": "interface",
+          "lineNumber": 69
+        },
+        {
+          "caller": "hasAidlInstance",
+          "callee": "instance",
+          "lineNumber": 69
+        },
+        {
+          "caller": "getAidlInstances",
+          "callee": "package",
+          "lineNumber": 80
+        },
+        {
+          "caller": "getAidlInstances",
+          "callee": "interface",
+          "lineNumber": 80
+        },
+        {
+          "caller": "getAidlInstances",
+          "callee": "push_back",
+          "lineNumber": 81
+        },
+        {
+          "caller": "getAidlInstances",
+          "callee": "instance",
+          "lineNumber": 81
+        },
+        {
+          "caller": "forEachInstance",
+          "callee": "func",
+          "lineNumber": 89
+        },
+        {
+          "caller": "GetDeviceHalManifest",
+          "callee": "[] {\n        const char* override_path = getenv(kVintfManifestPathEnv);\n        return HalManifest::loadFrom(override_path ? override_path : kDeviceManifestPath);\n    }",
+          "lineNumber": 94
+        },
+        {
+          "caller": "GetDeviceHalManifest",
+          "callee": "getenv",
+          "lineNumber": 95
+        },
+        {
+          "caller": "GetDeviceHalManifest",
+          "callee": "HalManifest::loadFrom",
+          "lineNumber": 96
+        },
+        {
+          "caller": "GetFrameworkHalManifest",
+          "callee": "HalManifest::loadFrom",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "demo/binary_paths.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 50,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "isExecutable",
+          "startLine": 13,
+          "endLine": 16,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "selfDir",
+          "startLine": 18,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "findBinary",
+          "startLine": 29,
+          "endLine": 48,
+          "params": [
+            "name"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "isExecutable",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "selfDir",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "findBinary",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isExecutable",
+          "callee": "stat",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isExecutable",
+          "callee": "c_str",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isExecutable",
+          "callee": "S_ISREG",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isExecutable",
+          "callee": "access",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isExecutable",
+          "callee": "c_str",
+          "lineNumber": 15
+        },
+        {
+          "caller": "selfDir",
+          "callee": "readlink",
+          "lineNumber": 20
+        },
+        {
+          "caller": "selfDir",
+          "callee": "strrchr",
+          "lineNumber": 23
+        },
+        {
+          "caller": "selfDir",
+          "callee": "std::string",
+          "lineNumber": 24
+        },
+        {
+          "caller": "selfDir",
+          "callee": "std::string",
+          "lineNumber": 24
+        },
+        {
+          "caller": "findBinary",
+          "callee": "selfDir",
+          "lineNumber": 30
+        },
+        {
+          "caller": "findBinary",
+          "callee": "isExecutable",
+          "lineNumber": 39
+        },
+        {
+          "caller": "findBinary",
+          "callee": "realpath",
+          "lineNumber": 41
+        },
+        {
+          "caller": "findBinary",
+          "callee": "c_str",
+          "lineNumber": 41
+        },
+        {
+          "caller": "findBinary",
+          "callee": "free",
+          "lineNumber": 44
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "demo/binary_paths.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "examples/demo_client.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 171,
+      "nonEmptyLines": 146,
+      "functions": [
+        {
+          "name": "section",
+          "startLine": 40,
+          "endLine": 43,
+          "params": [
+            "title"
+          ]
+        },
+        {
+          "name": "onEvent",
+          "startLine": 48,
+          "endLine": 52,
+          "params": [
+            "event"
+          ]
+        },
+        {
+          "name": "binderDied",
+          "startLine": 58,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 66,
+          "endLine": 171,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "Callback",
+          "startLine": 46,
+          "endLine": 53,
+          "methods": [
+            "onEvent"
+          ],
+          "properties": []
+        },
+        {
+          "name": "DeathRecipient",
+          "startLine": 56,
+          "endLine": 62,
+          "methods": [
+            "binderDied"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "section",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "onEvent",
+          "line": 48,
+          "isDefault": false
+        },
+        {
+          "name": "Callback",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "binderDied",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "DeathRecipient",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 66,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "section",
+          "callee": "printf",
+          "lineNumber": 41
+        },
+        {
+          "caller": "section",
+          "callee": "fflush",
+          "lineNumber": 42
+        },
+        {
+          "caller": "onEvent",
+          "callee": "printf",
+          "lineNumber": 49
+        },
+        {
+          "caller": "onEvent",
+          "callee": "getpid",
+          "lineNumber": 49
+        },
+        {
+          "caller": "onEvent",
+          "callee": "c_str",
+          "lineNumber": 49
+        },
+        {
+          "caller": "onEvent",
+          "callee": "fflush",
+          "lineNumber": 50
+        },
+        {
+          "caller": "onEvent",
+          "callee": "Status::ok",
+          "lineNumber": 51
+        },
+        {
+          "caller": "binderDied",
+          "callee": "printf",
+          "lineNumber": 59
+        },
+        {
+          "caller": "binderDied",
+          "callee": "fflush",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "ProcessState::self",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "startThreadPool",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 77
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 79
+        },
+        {
+          "caller": "main",
+          "callee": "android::defaultServiceManager",
+          "lineNumber": 80
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 82
+        },
+        {
+          "caller": "main",
+          "callee": "listServices",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "String8",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 87
+        },
+        {
+          "caller": "main",
+          "callee": "waitForService",
+          "lineNumber": 89
+        },
+        {
+          "caller": "main",
+          "callee": "String16",
+          "lineNumber": 89
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "android::interface_cast<IDemoService>",
+          "lineNumber": 94
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 95
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 97
+        },
+        {
+          "caller": "main",
+          "callee": "sp<DeathRecipient>::make",
+          "lineNumber": 98
+        },
+        {
+          "caller": "main",
+          "callee": "linkToDeath",
+          "lineNumber": 99
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 100
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 102
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 105
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "add",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 108
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 113
+        },
+        {
+          "caller": "main",
+          "callee": "echo",
+          "lineNumber": 113
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 114
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 114
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 119
+        },
+        {
+          "caller": "main",
+          "callee": "getServicePid",
+          "lineNumber": 119
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "getpid",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 124
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 127
+        },
+        {
+          "caller": "main",
+          "callee": "sortDescending",
+          "lineNumber": 127
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 128
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 129
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 130
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 133
+        },
+        {
+          "caller": "main",
+          "callee": "sp<Callback>::make",
+          "lineNumber": 134
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 135
+        },
+        {
+          "caller": "main",
+          "callee": "registerCallback",
+          "lineNumber": 135
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 136
+        },
+        {
+          "caller": "main",
+          "callee": "broadcast",
+          "lineNumber": 139
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "std::this_thread::sleep_for",
+          "lineNumber": 142
+        },
+        {
+          "caller": "main",
+          "callee": "std::chrono::milliseconds",
+          "lineNumber": 142
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 144
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 146
+        },
+        {
+          "caller": "main",
+          "callee": "openReport",
+          "lineNumber": 146
+        },
+        {
+          "caller": "main",
+          "callee": "get",
+          "lineNumber": 146
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 147
+        },
+        {
+          "caller": "main",
+          "callee": "get",
+          "lineNumber": 147
+        },
+        {
+          "caller": "main",
+          "callee": "lseek",
+          "lineNumber": 150
+        },
+        {
+          "caller": "main",
+          "callee": "get",
+          "lineNumber": 150
+        },
+        {
+          "caller": "main",
+          "callee": "read",
+          "lineNumber": 151
+        },
+        {
+          "caller": "main",
+          "callee": "get",
+          "lineNumber": 151
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 153
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 155
+        },
+        {
+          "caller": "main",
+          "callee": "section",
+          "lineNumber": 158
+        },
+        {
+          "caller": "main",
+          "callee": "isOk",
+          "lineNumber": 160
+        },
+        {
+          "caller": "main",
+          "callee": "getTransactionCount",
+          "lineNumber": 160
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "unregisterCallback",
+          "lineNumber": 164
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 166
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 167
+        },
+        {
+          "caller": "main",
+          "callee": "stopProcess",
+          "lineNumber": 169
+        },
+        {
+          "caller": "main",
+          "callee": "IPCThreadState::self",
+          "lineNumber": 169
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 4,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "scripts/run.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 95,
+      "nonEmptyLines": 85,
+      "functions": [
+        {
+          "name": "log",
+          "startLine": 25,
+          "endLine": 25,
+          "params": []
+        },
+        {
+          "name": "err",
+          "startLine": 26,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "works",
+          "startLine": 41,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "find_clang",
+          "startLine": 43,
+          "endLine": 54,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "scripts/setup-binder-host.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 104,
+      "nonEmptyLines": 91,
+      "functions": [
+        {
+          "name": "log",
+          "startLine": 21,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "err",
+          "startLine": 22,
+          "endLine": 22,
+          "params": []
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "tools/binderfs_ctl.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 71,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 26,
+          "endLine": 71,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "open",
+          "lineNumber": 35
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 35
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "strerror",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 38
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 39
+        },
+        {
+          "caller": "main",
+          "callee": "strlen",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "strncpy",
+          "lineNumber": 53
+        },
+        {
+          "caller": "main",
+          "callee": "ioctl",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "strerror",
+          "lineNumber": 60
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "c_str",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "close",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

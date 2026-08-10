@@ -1,0 +1,54 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 31,
+    "filesWithImports": 5,
+    "totalEdges": 8
+  },
+  "importMap": {
+    "CMakeLists.txt": [],
+    "PATCHES.md": [],
+    "README.md": [],
+    "compat/CMakeLists.txt": [],
+    "compat/include/aosp_host_compat.h": [],
+    "compat/include/selinux/android.h": [],
+    "compat/include/selinux/avc.h": [],
+    "compat/include/selinux/label.h": [],
+    "compat/include/selinux/selinux.h": [],
+    "compat/include/stdatomic.h": [],
+    "compat/include/vintf/VintfObject.h": [],
+    "compat/include/vintf/constants.h": [],
+    "compat/selinux_stub.cpp": [],
+    "compat/vintf_stub.cpp": [],
+    "demo/binary_paths.cpp": [
+      "demo/binary_paths.h"
+    ],
+    "demo/binary_paths.h": [],
+    "demo/child_process.cpp": [
+      "demo/child_process.h"
+    ],
+    "demo/child_process.h": [],
+    "demo/runner.cpp": [
+      "demo/binary_paths.h",
+      "demo/child_process.h",
+      "demo/runner.h"
+    ],
+    "demo/runner.h": [],
+    "examples/CMakeLists.txt": [],
+    "examples/aidl/com/example/demo/IDemoCallback.aidl": [],
+    "examples/aidl/com/example/demo/IDemoService.aidl": [],
+    "examples/demo_client.cpp": [],
+    "examples/demo_service.cpp": [
+      "demo/binary_paths.h",
+      "demo/child_process.h"
+    ],
+    "main.cpp": [
+      "demo/runner.h"
+    ],
+    "patches/IPCThreadState.patch": [],
+    "patches/ProcessState.patch": [],
+    "scripts/run.sh": [],
+    "scripts/setup-binder-host.sh": [],
+    "tools/binderfs_ctl.cpp": []
+  }
+}

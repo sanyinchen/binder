@@ -1,0 +1,160 @@
+{
+ "projectRoot": "/home/sanyinchen/CLionProjects/binder",
+ "files": [
+  {
+   "path": "CMakeLists.txt",
+   "language": "txt",
+   "fileCategory": "docs"
+  },
+  {
+   "path": "PATCHES.md",
+   "language": "markdown",
+   "fileCategory": "docs"
+  },
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "fileCategory": "docs"
+  },
+  {
+   "path": "compat/CMakeLists.txt",
+   "language": "txt",
+   "fileCategory": "docs"
+  },
+  {
+   "path": "compat/include/aosp_host_compat.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/android.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/avc.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/label.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/selinux.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/stdatomic.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/vintf/VintfObject.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/vintf/constants.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/selinux_stub.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/vintf_stub.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/binary_paths.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/binary_paths.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/child_process.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/child_process.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/runner.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/runner.h",
+   "language": "c",
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/CMakeLists.txt",
+   "language": "txt",
+   "fileCategory": "docs"
+  },
+  {
+   "path": "examples/aidl/com/example/demo/IDemoCallback.aidl",
+   "language": "aidl",
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/aidl/com/example/demo/IDemoService.aidl",
+   "language": "aidl",
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/demo_client.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/demo_service.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "main.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  },
+  {
+   "path": "patches/IPCThreadState.patch",
+   "language": "patch",
+   "fileCategory": "code"
+  },
+  {
+   "path": "patches/ProcessState.patch",
+   "language": "patch",
+   "fileCategory": "code"
+  },
+  {
+   "path": "scripts/run.sh",
+   "language": "shell",
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/setup-binder-host.sh",
+   "language": "shell",
+   "fileCategory": "script"
+  },
+  {
+   "path": "tools/binderfs_ctl.cpp",
+   "language": "cpp",
+   "fileCategory": "code"
+  }
+ ]
+}

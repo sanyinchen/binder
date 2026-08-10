@@ -1,0 +1,1504 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "30b0359f363684922305c9c05efbb7456f38b622",
+  "generatedAt": "2026-08-10T08:12:41.167Z",
+  "files": {
+    "CMakeLists.txt": {
+      "filePath": "CMakeLists.txt",
+      "contentHash": "41935bd47a5edf325628db8228e0b09ec17541d7352b4eaf5436ee3485b41a7c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 363,
+      "hasStructuralAnalysis": false
+    },
+    "PATCHES.md": {
+      "filePath": "PATCHES.md",
+      "contentHash": "9ca115dfe398d3b68bf73f8461c3feadad7cf6723929f8056331ce1da2532107",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "8f4df53c997168a29c9587e98c1d7ff1f3edc9ffdbbc8cd41a6c25aa0cfc3015",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 200,
+      "hasStructuralAnalysis": true
+    },
+    "compat/CMakeLists.txt": {
+      "filePath": "compat/CMakeLists.txt",
+      "contentHash": "06fe8da453d85979a3cfe08836627ed5df1de7b39d421f4e2773e311d0849b42",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": false
+    },
+    "compat/include/aosp_host_compat.h": {
+      "filePath": "compat/include/aosp_host_compat.h",
+      "contentHash": "b16cdc06190f9f3b57c851045a7ab569ba4225f0b698d53af1c136b89757e7ab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/selinux/android.h": {
+      "filePath": "compat/include/selinux/android.h",
+      "contentHash": "a224b43a063bd4f916f643bfc9f6645febe955969e693ce11ef5caf4fd96b3a2",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "selinux/label.h",
+          "specifiers": [
+            "selinux/label.h"
+          ]
+        },
+        {
+          "source": "selinux/selinux.h",
+          "specifiers": [
+            "selinux/selinux.h"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/selinux/avc.h": {
+      "filePath": "compat/include/selinux/avc.h",
+      "contentHash": "4abe335b6cb1ce9710818671c708194425297a67e3f94af80246b64a1e994b23",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "selinux/selinux.h",
+          "specifiers": [
+            "selinux/selinux.h"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/selinux/label.h": {
+      "filePath": "compat/include/selinux/label.h",
+      "contentHash": "7de4253cc7a55507020e9cec2bb3ca433f8d5fa961fd4ed3455cead63017bd09",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "selinux/selinux.h",
+          "specifiers": [
+            "selinux/selinux.h"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/selinux/selinux.h": {
+      "filePath": "compat/include/selinux/selinux.h",
+      "contentHash": "9b1f30d0ab9f4b6925944243427ab24925f29509bc3f5d2541b0bc1d89552eec",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "stdlib.h",
+          "specifiers": [
+            "stdlib.h"
+          ]
+        },
+        {
+          "source": "sys/types.h",
+          "specifiers": [
+            "sys/types.h"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/stdatomic.h": {
+      "filePath": "compat/include/stdatomic.h",
+      "contentHash": "378d320079d375c89ab008cd8011f232d149d29ea195d990a19f4ee9efbac1bc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/vintf/VintfObject.h": {
+      "filePath": "compat/include/vintf/VintfObject.h",
+      "contentHash": "f2dbd4415d7d4d24b581cb2b9ef66dbdb342334ee9f042d150826e963b18f553",
+      "functions": [
+        {
+          "name": "ManifestInstance",
+          "params": [
+            "package",
+            "interface",
+            "instance",
+            "updatableViaApex"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "format",
+          "params": [],
+          "returnType": "HalFormat",
+          "exported": true,
+          "lineCount": 1
+        },
+        {
+          "name": "updatableViaApex",
+          "params": [],
+          "returnType": "std::optional<std::string>",
+          "exported": true,
+          "lineCount": 1
+        },
+        {
+          "name": "add",
+          "params": [
+            "instance"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 1
+        }
+      ],
+      "classes": [
+        {
+          "name": "ManifestInstance",
+          "methods": [
+            "ManifestInstance",
+            "format",
+            "updatableViaApex"
+          ],
+          "properties": [
+            "mPackage",
+            "mInterface",
+            "mInstance",
+            "mUpdatableViaApex"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "HalManifest",
+          "methods": [
+            "loadFrom",
+            "hasAidlInstance",
+            "getAidlInstances",
+            "forEachInstance",
+            "add"
+          ],
+          "properties": [
+            "mInstances"
+          ],
+          "exported": true,
+          "lineCount": 19
+        },
+        {
+          "name": "VintfObject",
+          "methods": [
+            "GetDeviceHalManifest",
+            "GetFrameworkHalManifest"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "functional",
+          "specifiers": [
+            "functional"
+          ]
+        },
+        {
+          "source": "memory",
+          "specifiers": [
+            "memory"
+          ]
+        },
+        {
+          "source": "optional",
+          "specifiers": [
+            "optional"
+          ]
+        },
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        },
+        {
+          "source": "vector",
+          "specifiers": [
+            "vector"
+          ]
+        }
+      ],
+      "exports": [
+        "ManifestInstance",
+        "format",
+        "updatableViaApex",
+        "ManifestInstance",
+        "loadFrom",
+        "hasAidlInstance",
+        "getAidlInstances",
+        "forEachInstance",
+        "add",
+        "HalManifest",
+        "GetDeviceHalManifest",
+        "GetFrameworkHalManifest",
+        "VintfObject"
+      ],
+      "totalLines": 91,
+      "hasStructuralAnalysis": true
+    },
+    "compat/include/vintf/constants.h": {
+      "filePath": "compat/include/vintf/constants.h",
+      "contentHash": "fdba4001e5ec2038cb60b6fb9519e58134529dc9ddff04a480edaaa79f29d47b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "cstddef",
+          "specifiers": [
+            "cstddef"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "compat/selinux_stub.cpp": {
+      "filePath": "compat/selinux_stub.cpp",
+      "contentHash": "85854f0f415557657f09dd807f7a0dddfb714d923a66190bdceebd44265645f1",
+      "functions": [
+        {
+          "name": "logChecks",
+          "params": [],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [
+        {
+          "name": "selabel_handle_impl",
+          "methods": [],
+          "properties": [
+            "unused"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "imports": [
+        {
+          "source": "selinux/android.h",
+          "specifiers": [
+            "selinux/android.h"
+          ]
+        },
+        {
+          "source": "selinux/avc.h",
+          "specifiers": [
+            "selinux/avc.h"
+          ]
+        },
+        {
+          "source": "selinux/label.h",
+          "specifiers": [
+            "selinux/label.h"
+          ]
+        },
+        {
+          "source": "selinux/selinux.h",
+          "specifiers": [
+            "selinux/selinux.h"
+          ]
+        },
+        {
+          "source": "cstdarg",
+          "specifiers": [
+            "cstdarg"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "cstdlib",
+          "specifiers": [
+            "cstdlib"
+          ]
+        },
+        {
+          "source": "cstring",
+          "specifiers": [
+            "cstring"
+          ]
+        }
+      ],
+      "exports": [
+        "selabel_handle_impl",
+        "logChecks"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "compat/vintf_stub.cpp": {
+      "filePath": "compat/vintf_stub.cpp",
+      "contentHash": "f14964326e373bc39c116993a0b3bb3a9a5da1e3973ed95945077c009d19fde4",
+      "functions": [
+        {
+          "name": "trim",
+          "params": [
+            "s"
+          ],
+          "returnType": "std::string",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "parseLine",
+          "params": [
+            "line",
+            "out"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "loadFrom",
+          "params": [
+            "path"
+          ],
+          "returnType": "std::shared_ptr<const HalManifest>",
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "hasAidlInstance",
+          "params": [
+            "package",
+            "interface",
+            "instance"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "getAidlInstances",
+          "params": [
+            "package",
+            "interface"
+          ],
+          "returnType": "std::vector<std::string>",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "forEachInstance",
+          "params": [
+            "func"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "GetDeviceHalManifest",
+          "params": [],
+          "returnType": "std::shared_ptr<const HalManifest>",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "GetFrameworkHalManifest",
+          "params": [],
+          "returnType": "std::shared_ptr<const HalManifest>",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vintf/VintfObject.h",
+          "specifiers": [
+            "vintf/VintfObject.h"
+          ]
+        },
+        {
+          "source": "vintf/constants.h",
+          "specifiers": [
+            "vintf/constants.h"
+          ]
+        },
+        {
+          "source": "cstdlib",
+          "specifiers": [
+            "cstdlib"
+          ]
+        },
+        {
+          "source": "fstream",
+          "specifiers": [
+            "fstream"
+          ]
+        },
+        {
+          "source": "sstream",
+          "specifiers": [
+            "sstream"
+          ]
+        }
+      ],
+      "exports": [
+        "trim",
+        "parseLine",
+        "loadFrom",
+        "hasAidlInstance",
+        "getAidlInstances",
+        "forEachInstance",
+        "GetDeviceHalManifest",
+        "GetFrameworkHalManifest"
+      ],
+      "totalLines": 109,
+      "hasStructuralAnalysis": true
+    },
+    "demo/binary_paths.cpp": {
+      "filePath": "demo/binary_paths.cpp",
+      "contentHash": "3a84f5da815cbd98b461eea2cf49a3d627e92245f288bbfd6fa28ea3cbc6f57c",
+      "functions": [
+        {
+          "name": "isExecutable",
+          "params": [
+            "path"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "selfDir",
+          "params": [],
+          "returnType": "std::string",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "findBinary",
+          "params": [
+            "name"
+          ],
+          "returnType": "std::string",
+          "exported": true,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "binary_paths.h",
+          "specifiers": [
+            "binary_paths.h"
+          ]
+        },
+        {
+          "source": "climits",
+          "specifiers": [
+            "climits"
+          ]
+        },
+        {
+          "source": "cstdlib",
+          "specifiers": [
+            "cstdlib"
+          ]
+        },
+        {
+          "source": "cstring",
+          "specifiers": [
+            "cstring"
+          ]
+        },
+        {
+          "source": "sys/stat.h",
+          "specifiers": [
+            "sys/stat.h"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        },
+        {
+          "source": "vector",
+          "specifiers": [
+            "vector"
+          ]
+        }
+      ],
+      "exports": [
+        "isExecutable",
+        "selfDir",
+        "findBinary"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "demo/binary_paths.h": {
+      "filePath": "demo/binary_paths.h",
+      "contentHash": "1ebff8cf6f95b5ceedd4f49169a0146d7549313af99adb6272b56ab7e835872c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "demo/child_process.cpp": {
+      "filePath": "demo/child_process.cpp",
+      "contentHash": "7e0b826f908d5772fbe480597d037458bac9ae5e94dd873cbf2827e80f7698ea",
+      "functions": [
+        {
+          "name": "spawn",
+          "params": [
+            "path"
+          ],
+          "returnType": "pid_t",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "stillAlive",
+          "params": [
+            "pid"
+          ],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "waitForExit",
+          "params": [
+            "pid"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "terminate",
+          "params": [
+            "pid"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "execReplace",
+          "params": [
+            "path"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 5
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "child_process.h",
+          "specifiers": [
+            "child_process.h"
+          ]
+        },
+        {
+          "source": "cerrno",
+          "specifiers": [
+            "cerrno"
+          ]
+        },
+        {
+          "source": "csignal",
+          "specifiers": [
+            "csignal"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "cstring",
+          "specifiers": [
+            "cstring"
+          ]
+        },
+        {
+          "source": "sys/wait.h",
+          "specifiers": [
+            "sys/wait.h"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        }
+      ],
+      "exports": [
+        "spawn",
+        "stillAlive",
+        "waitForExit",
+        "terminate",
+        "execReplace"
+      ],
+      "totalLines": 52,
+      "hasStructuralAnalysis": true
+    },
+    "demo/child_process.h": {
+      "filePath": "demo/child_process.h",
+      "contentHash": "e457e5cbe343d94712dd24b5ecd0eac5ac0d40ef612251bd1e3bf5c1591b1aa1",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        },
+        {
+          "source": "sys/types.h",
+          "specifiers": [
+            "sys/types.h"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "demo/runner.cpp": {
+      "filePath": "demo/runner.cpp",
+      "contentHash": "4bb20cd1dfaf0682b7fd7b097b11ab4bd3d28be820f732a5543c561e72e30dbb",
+      "functions": [
+        {
+          "name": "cleanup",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "onSignal",
+          "params": [
+            "sig"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "banner",
+          "params": [
+            "text"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "binderIsReady",
+          "params": [],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "startAndSettle",
+          "params": [
+            "name",
+            "path",
+            "slot"
+          ],
+          "returnType": "pid_t",
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "runAll",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 52
+        },
+        {
+          "name": "runOne",
+          "params": [
+            "name"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "runner.h",
+          "specifiers": [
+            "runner.h"
+          ]
+        },
+        {
+          "source": "binary_paths.h",
+          "specifiers": [
+            "binary_paths.h"
+          ]
+        },
+        {
+          "source": "child_process.h",
+          "specifiers": [
+            "child_process.h"
+          ]
+        },
+        {
+          "source": "csignal",
+          "specifiers": [
+            "csignal"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        },
+        {
+          "source": "vector",
+          "specifiers": [
+            "vector"
+          ]
+        }
+      ],
+      "exports": [
+        "cleanup",
+        "onSignal",
+        "banner",
+        "binderIsReady",
+        "startAndSettle",
+        "runAll",
+        "runOne"
+      ],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "demo/runner.h": {
+      "filePath": "demo/runner.h",
+      "contentHash": "fed88dadc607a10709612a0f1702c6ccf9d9f26e888ab1e3aec5f4e5d47b95ac",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "examples/CMakeLists.txt": {
+      "filePath": "examples/CMakeLists.txt",
+      "contentHash": "6dcc2f9a6f8fdbdc50c463466f25c8121b82ff9ab786e9ea2ab64acbdbc5ba20",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": false
+    },
+    "examples/aidl/com/example/demo/IDemoCallback.aidl": {
+      "filePath": "examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "contentHash": "4db9208ad6587436818120b590d39438b60915b2e8947247ff8a9bd326659c9e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": false
+    },
+    "examples/aidl/com/example/demo/IDemoService.aidl": {
+      "filePath": "examples/aidl/com/example/demo/IDemoService.aidl",
+      "contentHash": "4b42af37adfdf27cbd5528942fa8defcca2600f17a5d9305c83e273594a1fd70",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 37,
+      "hasStructuralAnalysis": false
+    },
+    "examples/demo_client.cpp": {
+      "filePath": "examples/demo_client.cpp",
+      "contentHash": "ba751dccbf432836335dcb0a277b28532872a82373dd41738919d39275a976fa",
+      "functions": [
+        {
+          "name": "section",
+          "params": [
+            "title"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "onEvent",
+          "params": [
+            "event"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "binderDied",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 106
+        }
+      ],
+      "classes": [
+        {
+          "name": "Callback",
+          "methods": [
+            "onEvent"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "DeathRecipient",
+          "methods": [
+            "binderDied"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "com/example/demo/BnDemoCallback.h",
+          "specifiers": [
+            "com/example/demo/BnDemoCallback.h"
+          ]
+        },
+        {
+          "source": "com/example/demo/IDemoService.h",
+          "specifiers": [
+            "com/example/demo/IDemoService.h"
+          ]
+        },
+        {
+          "source": "binder/IPCThreadState.h",
+          "specifiers": [
+            "binder/IPCThreadState.h"
+          ]
+        },
+        {
+          "source": "binder/IServiceManager.h",
+          "specifiers": [
+            "binder/IServiceManager.h"
+          ]
+        },
+        {
+          "source": "binder/ProcessState.h",
+          "specifiers": [
+            "binder/ProcessState.h"
+          ]
+        },
+        {
+          "source": "utils/String16.h",
+          "specifiers": [
+            "utils/String16.h"
+          ]
+        },
+        {
+          "source": "utils/String8.h",
+          "specifiers": [
+            "utils/String8.h"
+          ]
+        },
+        {
+          "source": "chrono",
+          "specifiers": [
+            "chrono"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "thread",
+          "specifiers": [
+            "thread"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        }
+      ],
+      "exports": [
+        "section",
+        "onEvent",
+        "Callback",
+        "binderDied",
+        "DeathRecipient",
+        "main"
+      ],
+      "totalLines": 172,
+      "hasStructuralAnalysis": true
+    },
+    "examples/demo_service.cpp": {
+      "filePath": "examples/demo_service.cpp",
+      "contentHash": "77754a9d1254a60e432f4ac9215c3c0b2ec0b492fae43f6880ae88233f85f978",
+      "functions": [
+        {
+          "name": "add",
+          "params": [
+            "a",
+            "b",
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "echo",
+          "params": [
+            "message",
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "getServicePid",
+          "params": [
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "sortDescending",
+          "params": [
+            "values",
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "registerCallback",
+          "params": [
+            "callback"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "unregisterCallback",
+          "params": [
+            "callback"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "broadcast",
+          "params": [
+            "event"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "openReport",
+          "params": [
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "getTransactionCount",
+          "params": [
+            "out"
+          ],
+          "returnType": "Status",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "count",
+          "params": [],
+          "returnType": "void",
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "serviceManagerIsUp",
+          "params": [],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "stopSpawnedServiceManager",
+          "params": [],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "onSignal",
+          "params": [
+            "sig"
+          ],
+          "returnType": "void",
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "ensureServiceManager",
+          "params": [],
+          "returnType": "bool",
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "main",
+          "params": [],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 25
+        }
+      ],
+      "classes": [
+        {
+          "name": "DemoService",
+          "methods": [
+            "add",
+            "echo",
+            "getServicePid",
+            "sortDescending",
+            "registerCallback",
+            "unregisterCallback",
+            "broadcast",
+            "openReport",
+            "getTransactionCount",
+            "count"
+          ],
+          "properties": [
+            "mLock",
+            "mCallbacks",
+            "mCount"
+          ],
+          "exported": true,
+          "lineCount": 115
+        }
+      ],
+      "imports": [
+        {
+          "source": "com/example/demo/BnDemoService.h",
+          "specifiers": [
+            "com/example/demo/BnDemoService.h"
+          ]
+        },
+        {
+          "source": "com/example/demo/IDemoCallback.h",
+          "specifiers": [
+            "com/example/demo/IDemoCallback.h"
+          ]
+        },
+        {
+          "source": "demo/binary_paths.h",
+          "specifiers": [
+            "demo/binary_paths.h"
+          ]
+        },
+        {
+          "source": "demo/child_process.h",
+          "specifiers": [
+            "demo/child_process.h"
+          ]
+        },
+        {
+          "source": "binder/IPCThreadState.h",
+          "specifiers": [
+            "binder/IPCThreadState.h"
+          ]
+        },
+        {
+          "source": "binder/IServiceManager.h",
+          "specifiers": [
+            "binder/IServiceManager.h"
+          ]
+        },
+        {
+          "source": "binder/ProcessState.h",
+          "specifiers": [
+            "binder/ProcessState.h"
+          ]
+        },
+        {
+          "source": "binder/Status.h",
+          "specifiers": [
+            "binder/Status.h"
+          ]
+        },
+        {
+          "source": "utils/String16.h",
+          "specifiers": [
+            "utils/String16.h"
+          ]
+        },
+        {
+          "source": "algorithm",
+          "specifiers": [
+            "algorithm"
+          ]
+        },
+        {
+          "source": "csignal",
+          "specifiers": [
+            "csignal"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "cstdlib",
+          "specifiers": [
+            "cstdlib"
+          ]
+        },
+        {
+          "source": "mutex",
+          "specifiers": [
+            "mutex"
+          ]
+        },
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        },
+        {
+          "source": "vector",
+          "specifiers": [
+            "vector"
+          ]
+        }
+      ],
+      "exports": [
+        "add",
+        "echo",
+        "getServicePid",
+        "sortDescending",
+        "registerCallback",
+        "unregisterCallback",
+        "broadcast",
+        "openReport",
+        "getTransactionCount",
+        "DemoService",
+        "serviceManagerIsUp",
+        "stopSpawnedServiceManager",
+        "onSignal",
+        "ensureServiceManager",
+        "main"
+      ],
+      "totalLines": 259,
+      "hasStructuralAnalysis": true
+    },
+    "main.cpp": {
+      "filePath": "main.cpp",
+      "contentHash": "02b6185df374e1c1cf1e9d471a35bf9aaca5cee6f5a1a902e3fb26c083916647",
+      "functions": [
+        {
+          "name": "main",
+          "params": [
+            "argc",
+            "argv"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "demo/runner.h",
+          "specifiers": [
+            "demo/runner.h"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "cstring",
+          "specifiers": [
+            "cstring"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "patches/IPCThreadState.patch": {
+      "filePath": "patches/IPCThreadState.patch",
+      "contentHash": "7b419ad3368e9915b04b8404fc40be96f1f5012afd04d3a0a73a2d35910fcdb2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": false
+    },
+    "patches/ProcessState.patch": {
+      "filePath": "patches/ProcessState.patch",
+      "contentHash": "734302de0ad4b1ea892ad0bb0508503ce458fed699582db717d64c8411f87816",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/run.sh": {
+      "filePath": "scripts/run.sh",
+      "contentHash": "b776e8d00b39fa6ea7f4f8c6e66a695fc2b1cfd6439ea00ab50949268b29e7c8",
+      "functions": [
+        {
+          "name": "log",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "err",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "works",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "find_clang",
+          "params": [],
+          "exported": false,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 96,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/setup-binder-host.sh": {
+      "filePath": "scripts/setup-binder-host.sh",
+      "contentHash": "49b19709657f2ec58e75aa97e310d825f45aeab7e9ba3a398705140afc468836",
+      "functions": [
+        {
+          "name": "log",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "err",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 105,
+      "hasStructuralAnalysis": true
+    },
+    "tools/binderfs_ctl.cpp": {
+      "filePath": "tools/binderfs_ctl.cpp",
+      "contentHash": "465b0033d807b7ff464e149ea58859f7d52a57da76e06b914679f98cd64c2ec2",
+      "functions": [
+        {
+          "name": "main",
+          "params": [
+            "argc",
+            "argv"
+          ],
+          "returnType": "int",
+          "exported": true,
+          "lineCount": 46
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "linux/android/binderfs.h",
+          "specifiers": [
+            "linux/android/binderfs.h"
+          ]
+        },
+        {
+          "source": "cerrno",
+          "specifiers": [
+            "cerrno"
+          ]
+        },
+        {
+          "source": "cstdio",
+          "specifiers": [
+            "cstdio"
+          ]
+        },
+        {
+          "source": "cstring",
+          "specifiers": [
+            "cstring"
+          ]
+        },
+        {
+          "source": "fcntl.h",
+          "specifiers": [
+            "fcntl.h"
+          ]
+        },
+        {
+          "source": "string",
+          "specifiers": [
+            "string"
+          ]
+        },
+        {
+          "source": "sys/ioctl.h",
+          "specifiers": [
+            "sys/ioctl.h"
+          ]
+        },
+        {
+          "source": "unistd.h",
+          "specifiers": [
+            "unistd.h"
+          ]
+        }
+      ],
+      "exports": [
+        "main"
+      ],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "scriptCompleted": true,
+  "commonPrefix": "",
+  "directoryGroups": {
+    "demo": [
+      "file:demo/child_process.cpp",
+      "file:demo/child_process.h",
+      "file:demo/runner.h",
+      "file:demo/runner.cpp",
+      "file:demo/binary_paths.cpp",
+      "file:demo/binary_paths.h"
+    ],
+    "examples": [
+      "file:examples/demo_service.cpp",
+      "config:examples/CMakeLists.txt",
+      "file:examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "file:examples/aidl/com/example/demo/IDemoService.aidl",
+      "file:examples/demo_client.cpp"
+    ],
+    "(root)": [
+      "file:main.cpp",
+      "config:CMakeLists.txt",
+      "document:PATCHES.md",
+      "document:README.md"
+    ],
+    "compat": [
+      "config:compat/CMakeLists.txt",
+      "file:compat/include/aosp_host_compat.h",
+      "file:compat/include/selinux/android.h",
+      "file:compat/include/selinux/avc.h",
+      "file:compat/include/selinux/label.h",
+      "file:compat/include/selinux/selinux.h",
+      "file:compat/include/stdatomic.h",
+      "file:compat/include/vintf/VintfObject.h",
+      "file:compat/include/vintf/constants.h",
+      "file:compat/selinux_stub.cpp",
+      "file:compat/vintf_stub.cpp"
+    ],
+    "patches": [
+      "file:patches/IPCThreadState.patch",
+      "file:patches/ProcessState.patch"
+    ],
+    "scripts": [
+      "file:scripts/run.sh",
+      "file:scripts/setup-binder-host.sh"
+    ],
+    "tools": [
+      "file:tools/binderfs_ctl.cpp"
+    ]
+  },
+  "nodeTypeGroups": {
+    "file": [
+      "file:demo/child_process.cpp",
+      "file:demo/child_process.h",
+      "file:examples/demo_service.cpp",
+      "file:main.cpp",
+      "file:demo/runner.h",
+      "file:demo/runner.cpp",
+      "file:compat/include/aosp_host_compat.h",
+      "file:compat/include/selinux/android.h",
+      "file:compat/include/selinux/avc.h",
+      "file:compat/include/selinux/label.h",
+      "file:compat/include/selinux/selinux.h",
+      "file:compat/include/stdatomic.h",
+      "file:compat/include/vintf/VintfObject.h",
+      "file:compat/include/vintf/constants.h",
+      "file:compat/selinux_stub.cpp",
+      "file:compat/vintf_stub.cpp",
+      "file:demo/binary_paths.cpp",
+      "file:demo/binary_paths.h",
+      "file:examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "file:examples/aidl/com/example/demo/IDemoService.aidl",
+      "file:examples/demo_client.cpp",
+      "file:patches/IPCThreadState.patch",
+      "file:patches/ProcessState.patch",
+      "file:scripts/run.sh",
+      "file:scripts/setup-binder-host.sh",
+      "file:tools/binderfs_ctl.cpp"
+    ],
+    "config": [
+      "config:CMakeLists.txt",
+      "config:compat/CMakeLists.txt",
+      "config:examples/CMakeLists.txt"
+    ],
+    "document": [
+      "document:PATCHES.md",
+      "document:README.md"
+    ]
+  },
+  "crossCategoryEdges": [
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "depends_on",
+      "count": 26
+    },
+    {
+      "fromType": "document",
+      "toType": "file",
+      "edgeType": "documents",
+      "count": 16
+    },
+    {
+      "fromType": "config",
+      "toType": "file",
+      "edgeType": "configures",
+      "count": 13
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "imports",
+      "count": 8
+    },
+    {
+      "fromType": "file",
+      "toType": "file",
+      "edgeType": "defines_schema",
+      "count": 4
+    },
+    {
+      "fromType": "config",
+      "toType": "config",
+      "edgeType": "depends_on",
+      "count": 2
+    },
+    {
+      "fromType": "document",
+      "toType": "config",
+      "edgeType": "documents",
+      "count": 2
+    },
+    {
+      "fromType": "document",
+      "toType": "document",
+      "edgeType": "related",
+      "count": 1
+    }
+  ],
+  "interGroupImports": [
+    {
+      "from": "examples",
+      "to": "demo",
+      "count": 2
+    },
+    {
+      "from": "(root)",
+      "to": "demo",
+      "count": 1
+    }
+  ],
+  "interGroupAllEdges": [
+    {
+      "from": "(root)",
+      "to": "demo",
+      "count": 7
+    },
+    {
+      "from": "(root)",
+      "to": "compat",
+      "count": 7
+    },
+    {
+      "from": "examples",
+      "to": "demo",
+      "count": 4
+    },
+    {
+      "from": "(root)",
+      "to": "examples",
+      "count": 4
+    },
+    {
+      "from": "(root)",
+      "to": "tools",
+      "count": 2
+    },
+    {
+      "from": "(root)",
+      "to": "scripts",
+      "count": 2
+    },
+    {
+      "from": "(root)",
+      "to": "patches",
+      "count": 2
+    },
+    {
+      "from": "scripts",
+      "to": "examples",
+      "count": 2
+    },
+    {
+      "from": "scripts",
+      "to": "demo",
+      "count": 1
+    },
+    {
+      "from": "scripts",
+      "to": "tools",
+      "count": 1
+    },
+    {
+      "from": "patches",
+      "to": "compat",
+      "count": 1
+    }
+  ],
+  "intraGroupDensity": {
+    "demo": {
+      "internalEdges": 7,
+      "totalEdges": 19,
+      "density": 0.368
+    },
+    "examples": {
+      "internalEdges": 10,
+      "totalEdges": 20,
+      "density": 0.5
+    },
+    "(root)": {
+      "internalEdges": 5,
+      "totalEdges": 29,
+      "density": 0.172
+    },
+    "compat": {
+      "internalEdges": 15,
+      "totalEdges": 23,
+      "density": 0.652
+    },
+    "patches": {
+      "internalEdges": 1,
+      "totalEdges": 4,
+      "density": 0.25
+    },
+    "scripts": {
+      "internalEdges": 1,
+      "totalEdges": 7,
+      "density": 0.143
+    },
+    "tools": {
+      "internalEdges": 0,
+      "totalEdges": 3,
+      "density": 0
+    }
+  },
+  "patternMatches": {
+    "demo": "example",
+    "examples": "example",
+    "(root)": "root",
+    "compat": "compat",
+    "patches": "patch",
+    "scripts": "script",
+    "tools": "utility"
+  },
+  "filePatterns": {
+    "file:demo/child_process.h": "header",
+    "file:main.cpp": "entry",
+    "file:demo/runner.h": "header",
+    "config:CMakeLists.txt": "config",
+    "document:PATCHES.md": "documentation",
+    "document:README.md": "documentation",
+    "config:compat/CMakeLists.txt": "config",
+    "file:compat/include/aosp_host_compat.h": "header",
+    "file:compat/include/selinux/android.h": "header",
+    "file:compat/include/selinux/avc.h": "header",
+    "file:compat/include/selinux/label.h": "header",
+    "file:compat/include/selinux/selinux.h": "header",
+    "file:compat/include/stdatomic.h": "header",
+    "file:compat/include/vintf/VintfObject.h": "header",
+    "file:compat/include/vintf/constants.h": "header",
+    "file:demo/binary_paths.h": "header",
+    "config:examples/CMakeLists.txt": "config",
+    "file:examples/aidl/com/example/demo/IDemoCallback.aidl": "types",
+    "file:examples/aidl/com/example/demo/IDemoService.aidl": "types",
+    "file:patches/IPCThreadState.patch": "patch",
+    "file:patches/ProcessState.patch": "patch",
+    "file:scripts/run.sh": "script",
+    "file:scripts/setup-binder-host.sh": "script"
+  },
+  "deploymentTopology": {
+    "hasDockerfile": false,
+    "hasCompose": false,
+    "hasK8s": false,
+    "hasTerraform": false,
+    "hasCI": false,
+    "infraFiles": [
+      "scripts/run.sh",
+      "scripts/setup-binder-host.sh"
+    ]
+  },
+  "dataPipeline": {
+    "schemaFiles": [
+      "examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "examples/aidl/com/example/demo/IDemoService.aidl"
+    ],
+    "migrationFiles": [],
+    "dataModelFiles": [],
+    "apiHandlerFiles": [
+      "examples/demo_service.cpp"
+    ]
+  },
+  "docCoverage": {
+    "groupsWithDocs": 7,
+    "totalGroups": 7,
+    "coverageRatio": 1,
+    "undocumentedGroups": []
+  },
+  "dependencyDirection": [
+    {
+      "dependent": "examples",
+      "dependsOn": "demo",
+      "forward": 6,
+      "reverse": 0
+    },
+    {
+      "dependent": "(root)",
+      "dependsOn": "demo",
+      "forward": 2,
+      "reverse": 0
+    },
+    {
+      "dependent": "(root)",
+      "dependsOn": "compat",
+      "forward": 1,
+      "reverse": 0
+    },
+    {
+      "dependent": "(root)",
+      "dependsOn": "examples",
+      "forward": 1,
+      "reverse": 0
+    },
+    {
+      "dependent": "scripts",
+      "dependsOn": "demo",
+      "forward": 1,
+      "reverse": 0
+    },
+    {
+      "dependent": "scripts",
+      "dependsOn": "examples",
+      "forward": 2,
+      "reverse": 0
+    },
+    {
+      "dependent": "scripts",
+      "dependsOn": "tools",
+      "forward": 1,
+      "reverse": 0
+    },
+    {
+      "dependent": "patches",
+      "dependsOn": "compat",
+      "forward": 1,
+      "reverse": 0
+    }
+  ],
+  "fileStats": {
+    "totalFileNodes": 31,
+    "filesPerGroup": {
+      "demo": 6,
+      "examples": 5,
+      "(root)": 4,
+      "compat": 11,
+      "patches": 2,
+      "scripts": 2,
+      "tools": 1
+    },
+    "nodeTypeCounts": {
+      "file": 26,
+      "config": 3,
+      "document": 2
+    }
+  },
+  "fileFanIn": {
+    "file:demo/child_process.h": 3,
+    "file:demo/binary_paths.h": 3,
+    "file:demo/runner.h": 2
+  },
+  "fileFanOut": {
+    "file:demo/child_process.cpp": 1,
+    "file:examples/demo_service.cpp": 2,
+    "file:main.cpp": 1,
+    "file:demo/runner.cpp": 3,
+    "file:demo/binary_paths.cpp": 1
+  }
+}

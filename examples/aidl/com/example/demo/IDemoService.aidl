@@ -2,7 +2,7 @@ package com.example.demo;
 
 import com.example.demo.IDemoCallback;
 
-/**ttrfdschgfdsgfdsrdx 45erd4es4erd3ws2w g hg  hbvtfc  r d
+/**
  * Demo service registered with servicemanager under the name "demo.service".
  *
  * Exercises the transaction shapes libbinder supports: primitives, strings,
@@ -18,7 +18,7 @@ interface IDemoService {
     /** Proves the work happens in the service process, not the caller's. */
     int getServicePid();
 
-    /** Arrays in and out. */w333er
+    /** Arrays in and out. */
     int[] sortDescending(in int[] values);
 
     /** Passes a binder reference the other way; the service keeps it. */

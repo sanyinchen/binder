@@ -1,0 +1,16 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "合并脚本报告中没有 'Could not fix' 条目；对 4 个 batch 原始数据的复核确认：67 个节点全部带合法 id，无未知 type（file/function/class/config/document），无未知 complexity（simple/moderate/complex），无悬空边。未做任何修改。",
+    "141 -> 140 条边的差值来自一条合法的重复边：(file:demo/runner.cpp, file:demo/binary_paths.h, depends_on) 在 batch-2 中出现两次，被去重保留权重较高的一条。没有边因为节点缺失而被丢弃。",
+    "importMap 的 8 条项目内 import 关系（binary_paths.cpp、child_process.cpp、runner.cpp x3、demo_service.cpp x2、main.cpp）在图中均已存在对应的 imports 边（direction=forward, weight=0.7），因此脚本的 'Recovered 0 imports edges' 属预期结果，无跨 batch 边缺口。",
+    "数据质量观察：3 对文件之间同时存在 imports 与 depends_on 边（runner.cpp→binary_paths.h、runner.cpp→child_process.h、demo_service.cpp→binary_paths.h），属语义冗余而非错误，未做删除以免丢失分析器意图。",
+    "覆盖度：scan-result.json 中的 31 个文件与图中 31 个文件级节点（file/config/document）一一对应，既无遗漏也无凭空生成的节点；140 条边的 direction 均为 forward，weight 均在 [0,1] 区间，无自环，无孤立节点。",
+    "batch-3（CMakeLists.txt、PATCHES.md、README.md）仅产出 3 个节点却有 28 条边，边/节点比明显高于其他 batch。这是配置与文档节点向全项目文件扇出（configures/documents）的正常形态，所有目标节点均已存在，无需处理。"
+  ]
+}

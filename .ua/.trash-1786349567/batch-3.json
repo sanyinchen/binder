@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "config:CMakeLists.txt",
+      "type": "config",
+      "name": "CMakeLists.txt",
+      "filePath": "CMakeLists.txt",
+      "summary": "顶层 CMake 构建配置：自动探测并强制使用 clang 工具链，把 external/android/ 下逐字节复制的 AOSP android-12 源码编译成 fmtlib/log/cutils/utils/base/binder 六个宿主机静态库，并产出 servicemanager、binderfs_ctl、binder_demo 等可执行文件。关键点是给 binder 目标定义 BINDER_ENABLE_KERNEL_IPC，打开上游默认关闭的 /dev/binder ioctl 路径。",
+      "tags": ["build-system", "configuration", "cmake", "toolchain", "entry-point"],
+      "complexity": "complex",
+      "languageNotes": "通过 add_compile_options(-include compat/include/aosp_host_compat.h) 全局强制包含垫片头文件，并用 include_directories(BEFORE compat/include) 让自制的 <stdatomic.h> 抢在 clang 自带版本之前被找到——这是把 bionic 目标代码搬到 glibc 上的典型手法。"
+    },
+    {
+      "id": "document:PATCHES.md",
+      "type": "document",
+      "name": "PATCHES.md",
+      "filePath": "PATCHES.md",
+      "summary": "逐条记录本项目对 AOSP 源码所做的全部本地改动：IPCThreadState.cpp 与 ProcessState.cpp 的 __ANDROID__ 守卫翻转、becomeContextManager() 的 SELinux 探测修复，以及用 compat/ 桩件整体替换 libselinux、libvintf 的理由。",
+      "tags": ["documentation", "patches", "binder", "compatibility", "aosp"],
+      "complexity": "moderate",
+      "languageNotes": "文档解释了一个非直觉的内核行为：无 SELinux 的内核上 BINDER_SET_CONTEXT_MGR_EXT 这个 ioctl 本身会成功，失败被推迟到后续每一次事务，因此上游「ioctl 失败才回退」的兜底逻辑永远不会触发。"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "项目主文档：说明如何在普通 Linux 宿主机上构建并运行 Android 12 的 binder IPC 栈，涵盖快速开始、手动构建、内核 CONFIG 要求、demo 覆盖的八项 binder 能力、目录结构、clang 强制要求、CLion 调试方式与已知限制。",
+      "tags": ["documentation", "entry-point", "overview", "getting-started", "binder"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:main.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:demo/runner.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:demo/binary_paths.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:demo/child_process.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:tools/binderfs_ctl.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:compat/include/aosp_host_compat.h",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "file:compat/include/stdatomic.h",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "config:compat/CMakeLists.txt",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CMakeLists.txt",
+      "target": "config:examples/CMakeLists.txt",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:main.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:demo/runner.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:demo/binary_paths.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:demo/child_process.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:scripts/run.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:scripts/setup-binder-host.sh",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:tools/binderfs_ctl.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:examples/demo_service.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:examples/demo_client.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:examples/aidl/com/example/demo/IDemoService.aidl",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:CMakeLists.txt",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "document:PATCHES.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:patches/IPCThreadState.patch",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:patches/ProcessState.patch",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:compat/selinux_stub.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:compat/vintf_stub.cpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:compat/include/aosp_host_compat.h",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "file:compat/include/stdatomic.h",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PATCHES.md",
+      "target": "config:CMakeLists.txt",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

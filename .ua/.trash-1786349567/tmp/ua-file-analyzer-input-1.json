@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/home/sanyinchen/CLionProjects/binder",
+  "batchFiles": [
+    {"path": "demo/child_process.cpp", "language": "cpp", "sizeLines": 51, "fileCategory": "code"},
+    {"path": "demo/child_process.h", "language": "c", "sizeLines": 32, "fileCategory": "code"},
+    {"path": "examples/demo_service.cpp", "language": "cpp", "sizeLines": 258, "fileCategory": "code"}
+  ],
+  "batchImportData": {"demo/child_process.cpp": ["demo/child_process.h"], "demo/child_process.h": [], "examples/demo_service.cpp": ["demo/binary_paths.h", "demo/child_process.h"]}
+}

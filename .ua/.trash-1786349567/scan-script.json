@@ -1,0 +1,212 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "8bdcc4e24b1d017c8783e0181e25c2adcbb468d99789f7ff832409a4f0a59a66",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 362,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "PATCHES.md",
+      "language": "markdown",
+      "sizeLines": 75,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 199,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "compat/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 8,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "compat/include/aosp_host_compat.h",
+      "language": "c",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/selinux/android.h",
+      "language": "c",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/selinux/avc.h",
+      "language": "c",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/selinux/label.h",
+      "language": "c",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/selinux/selinux.h",
+      "language": "c",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/stdatomic.h",
+      "language": "c",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/vintf/VintfObject.h",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/include/vintf/constants.h",
+      "language": "c",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/selinux_stub.cpp",
+      "language": "cpp",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "compat/vintf_stub.cpp",
+      "language": "cpp",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/binary_paths.cpp",
+      "language": "cpp",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/binary_paths.h",
+      "language": "c",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/child_process.cpp",
+      "language": "cpp",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/child_process.h",
+      "language": "c",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/runner.cpp",
+      "language": "cpp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/runner.h",
+      "language": "c",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/CMakeLists.txt",
+      "language": "txt",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "language": "aidl",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/aidl/com/example/demo/IDemoService.aidl",
+      "language": "aidl",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/demo_client.cpp",
+      "language": "cpp",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "examples/demo_service.cpp",
+      "language": "cpp",
+      "sizeLines": 258,
+      "fileCategory": "code"
+    },
+    {
+      "path": "main.cpp",
+      "language": "cpp",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "patches/IPCThreadState.patch",
+      "language": "patch",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "patches/ProcessState.patch",
+      "language": "patch",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/run.sh",
+      "language": "shell",
+      "sizeLines": 95,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/setup-binder-host.sh",
+      "language": "shell",
+      "sizeLines": 104,
+      "fileCategory": "script"
+    },
+    {
+      "path": "tools/binderfs_ctl.cpp",
+      "language": "cpp",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 31,
+  "filteredByIgnore": 530,
+  "estimatedComplexity": "moderate",
+  "stats": {
+    "filesScanned": 31,
+    "byCategory": {
+      "docs": 5,
+      "code": 24,
+      "script": 2
+    },
+    "byLanguage": {
+      "txt": 3,
+      "markdown": 2,
+      "c": 11,
+      "cpp": 9,
+      "aidl": 2,
+      "patch": 2,
+      "shell": 2
+    }
+  }
+}

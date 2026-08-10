@@ -1,0 +1,523 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "type": "document",
+      "summary": "项目主文档：说明如何在普通 Linux 宿主机上构建并运行 Android 12 的 binder IPC 栈，涵盖快速开始、手动构建、内核 CONFIG 要求、demo 覆盖的八项 binder 能力、目录结构、clang 强制要求、CLion 调试方式与已知限制。"
+    },
+    {
+      "id": "file:main.cpp",
+      "score": 4,
+      "name": "main.cpp",
+      "type": "file",
+      "summary": "binder_demo 可执行文件的入口点，只负责解析命令行参数并分派到 demo:: 命名空间：无参数或 demo/all 走完整演示流程，service/client/servicemanager 则以前台方式单独运行对应的伴生二进制。"
+    },
+    {
+      "id": "config:compat/CMakeLists.txt",
+      "score": 2,
+      "name": "CMakeLists.txt",
+      "type": "config",
+      "summary": "compat 目录的构建脚本，把 selinux_stub.cpp 与 vintf_stub.cpp 分别编译成静态库 selinux_stub / vintf_stub，并把 include/ 作为 PUBLIC 头文件目录暴露出去，用于在宿主机上替换 libselinux 和 libvintf。"
+    },
+    {
+      "id": "config:examples/CMakeLists.txt",
+      "score": 2,
+      "name": "CMakeLists.txt",
+      "type": "config",
+      "summary": "demo 服务与客户端的构建脚本：用项目自带的 tools/bin/aidl 在构建期把 AIDL 生成 C++ 代码打成 demo_aidl 静态库，再链接出 demo_service 与 demo_client 两个可执行文件。"
+    },
+    {
+      "id": "document:PATCHES.md",
+      "score": 2,
+      "name": "PATCHES.md",
+      "type": "document",
+      "summary": "逐条记录本项目对 AOSP 源码所做的全部本地改动：IPCThreadState.cpp 与 ProcessState.cpp 的 __ANDROID__ 守卫翻转、becomeContextManager() 的 SELinux 探测修复，以及用 compat/ 桩件整体替换 libselinux、libvintf 的理由。"
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:examples/demo_service.cpp",
+      "fanIn": 6,
+      "name": "demo_service.cpp"
+    },
+    {
+      "id": "file:compat/include/aosp_host_compat.h",
+      "fanIn": 5,
+      "name": "aosp_host_compat.h"
+    },
+    {
+      "id": "file:demo/binary_paths.h",
+      "fanIn": 5,
+      "name": "binary_paths.h"
+    },
+    {
+      "id": "file:examples/demo_client.cpp",
+      "fanIn": 5,
+      "name": "demo_client.cpp"
+    },
+    {
+      "id": "file:compat/include/selinux/selinux.h",
+      "fanIn": 4,
+      "name": "selinux.h"
+    },
+    {
+      "id": "file:demo/child_process.h",
+      "fanIn": 4,
+      "name": "child_process.h"
+    },
+    {
+      "id": "file:compat/selinux_stub.cpp",
+      "fanIn": 3,
+      "name": "selinux_stub.cpp"
+    },
+    {
+      "id": "file:demo/child_process.cpp",
+      "fanIn": 3,
+      "name": "child_process.cpp"
+    },
+    {
+      "id": "file:demo/runner.cpp",
+      "fanIn": 3,
+      "name": "runner.cpp"
+    },
+    {
+      "id": "file:tools/binderfs_ctl.cpp",
+      "fanIn": 3,
+      "name": "binderfs_ctl.cpp"
+    },
+    {
+      "id": "config:CMakeLists.txt",
+      "fanIn": 2,
+      "name": "CMakeLists.txt"
+    },
+    {
+      "id": "file:compat/include/selinux/label.h",
+      "fanIn": 2,
+      "name": "label.h"
+    },
+    {
+      "id": "file:compat/include/stdatomic.h",
+      "fanIn": 2,
+      "name": "stdatomic.h"
+    },
+    {
+      "id": "file:compat/vintf_stub.cpp",
+      "fanIn": 2,
+      "name": "vintf_stub.cpp"
+    },
+    {
+      "id": "file:demo/binary_paths.cpp",
+      "fanIn": 2,
+      "name": "binary_paths.cpp"
+    },
+    {
+      "id": "file:demo/runner.h",
+      "fanIn": 2,
+      "name": "runner.h"
+    },
+    {
+      "id": "file:examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "fanIn": 2,
+      "name": "IDemoCallback.aidl"
+    },
+    {
+      "id": "file:examples/aidl/com/example/demo/IDemoService.aidl",
+      "fanIn": 2,
+      "name": "IDemoService.aidl"
+    },
+    {
+      "id": "file:main.cpp",
+      "fanIn": 2,
+      "name": "main.cpp"
+    },
+    {
+      "id": "file:patches/IPCThreadState.patch",
+      "fanIn": 2,
+      "name": "IPCThreadState.patch"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "file:compat/vintf_stub.cpp",
+      "fanOut": 14,
+      "name": "vintf_stub.cpp"
+    },
+    {
+      "id": "document:README.md",
+      "fanOut": 12,
+      "name": "README.md"
+    },
+    {
+      "id": "file:demo/child_process.cpp",
+      "fanOut": 11,
+      "name": "child_process.cpp"
+    },
+    {
+      "id": "file:demo/runner.cpp",
+      "fanOut": 10,
+      "name": "runner.cpp"
+    },
+    {
+      "id": "config:CMakeLists.txt",
+      "fanOut": 9,
+      "name": "CMakeLists.txt"
+    },
+    {
+      "id": "file:compat/selinux_stub.cpp",
+      "fanOut": 9,
+      "name": "selinux_stub.cpp"
+    },
+    {
+      "id": "file:examples/demo_service.cpp",
+      "fanOut": 8,
+      "name": "demo_service.cpp"
+    },
+    {
+      "id": "document:PATCHES.md",
+      "fanOut": 7,
+      "name": "PATCHES.md"
+    },
+    {
+      "id": "file:compat/include/vintf/VintfObject.h",
+      "fanOut": 6,
+      "name": "VintfObject.h"
+    },
+    {
+      "id": "file:examples/demo_client.cpp",
+      "fanOut": 5,
+      "name": "demo_client.cpp"
+    },
+    {
+      "id": "file:scripts/run.sh",
+      "fanOut": 5,
+      "name": "run.sh"
+    },
+    {
+      "id": "config:examples/CMakeLists.txt",
+      "fanOut": 4,
+      "name": "CMakeLists.txt"
+    },
+    {
+      "id": "file:demo/binary_paths.cpp",
+      "fanOut": 4,
+      "name": "binary_paths.cpp"
+    },
+    {
+      "id": "file:examples/aidl/com/example/demo/IDemoService.aidl",
+      "fanOut": 4,
+      "name": "IDemoService.aidl"
+    },
+    {
+      "id": "file:examples/aidl/com/example/demo/IDemoCallback.aidl",
+      "fanOut": 3,
+      "name": "IDemoCallback.aidl"
+    },
+    {
+      "id": "file:main.cpp",
+      "fanOut": 3,
+      "name": "main.cpp"
+    },
+    {
+      "id": "config:compat/CMakeLists.txt",
+      "fanOut": 2,
+      "name": "CMakeLists.txt"
+    },
+    {
+      "id": "file:compat/include/selinux/android.h",
+      "fanOut": 2,
+      "name": "android.h"
+    },
+    {
+      "id": "file:patches/ProcessState.patch",
+      "fanOut": 2,
+      "name": "ProcessState.patch"
+    },
+    {
+      "id": "file:tools/binderfs_ctl.cpp",
+      "fanOut": 2,
+      "name": "binderfs_ctl.cpp"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:main.cpp",
+    "order": [
+      "file:main.cpp",
+      "file:demo/runner.h"
+    ],
+    "depthMap": {
+      "file:main.cpp": 0,
+      "file:demo/runner.h": 1
+    },
+    "byDepth": {
+      "0": [
+        "file:main.cpp"
+      ],
+      "1": [
+        "file:demo/runner.h"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:PATCHES.md",
+        "name": "PATCHES.md",
+        "type": "document",
+        "summary": "逐条记录本项目对 AOSP 源码所做的全部本地改动：IPCThreadState.cpp 与 ProcessState.cpp 的 __ANDROID__ 守卫翻转、becomeContextManager() 的 SELinux 探测修复，以及用 compat/ 桩件整体替换 libselinux、libvintf 的理由。"
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "项目主文档：说明如何在普通 Linux 宿主机上构建并运行 Android 12 的 binder IPC 栈，涵盖快速开始、手动构建、内核 CONFIG 要求、demo 覆盖的八项 binder 能力、目录结构、clang 强制要求、CLion 调试方式与已知限制。"
+      }
+    ],
+    "infrastructure": [],
+    "data": [],
+    "config": [
+      {
+        "id": "config:CMakeLists.txt",
+        "name": "CMakeLists.txt",
+        "type": "config",
+        "summary": "顶层 CMake 构建配置：自动探测并强制使用 clang 工具链，把 external/android/ 下逐字节复制的 AOSP android-12 源码编译成 fmtlib/log/cutils/utils/base/binder 六个宿主机静态库，并产出 servicemanager、binderfs_ctl、binder_demo 等可执行文件。关键点是给 binder 目标定义 BINDER_ENABLE_KERNEL_IPC，打开上游默认关闭的 /dev/binder ioctl 路径。"
+      },
+      {
+        "id": "config:compat/CMakeLists.txt",
+        "name": "CMakeLists.txt",
+        "type": "config",
+        "summary": "compat 目录的构建脚本，把 selinux_stub.cpp 与 vintf_stub.cpp 分别编译成静态库 selinux_stub / vintf_stub，并把 include/ 作为 PUBLIC 头文件目录暴露出去，用于在宿主机上替换 libselinux 和 libvintf。"
+      },
+      {
+        "id": "config:examples/CMakeLists.txt",
+        "name": "CMakeLists.txt",
+        "type": "config",
+        "summary": "demo 服务与客户端的构建脚本：用项目自带的 tools/bin/aidl 在构建期把 AIDL 生成 C++ 代码打成 demo_aidl 静态库，再链接出 demo_service 与 demo_client 两个可执行文件。"
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "nodes": [
+        "file:demo/binary_paths.h",
+        "file:demo/runner.cpp"
+      ],
+      "edgeCount": 2
+    },
+    {
+      "nodes": [
+        "file:demo/binary_paths.h",
+        "file:examples/demo_service.cpp"
+      ],
+      "edgeCount": 2
+    },
+    {
+      "nodes": [
+        "file:demo/child_process.h",
+        "file:demo/runner.cpp"
+      ],
+      "edgeCount": 2
+    }
+  ],
+  "layers": {
+    "count": 7,
+    "list": [
+      {
+        "id": "layer:entry",
+        "name": "入口与演示编排层",
+        "description": "binder_demo 可执行文件的命令行入口，以及 demo/ 下负责定位伴生二进制、fork/exec 拉起 servicemanager 与 demo_service/demo_client 并统一清理子进程的编排代码。"
+      },
+      {
+        "id": "layer:api",
+        "name": "AIDL 契约与示例服务层",
+        "description": "以 AIDL 定义的 IDemoService / IDemoCallback 接口契约，以及注册到 servicemanager 的示例服务端与调用它的客户端，覆盖基本类型、数组、binder 引用回调、oneway 与 fd 传递等事务形态。"
+      },
+      {
+        "id": "layer:compat",
+        "name": "宿主机兼容层",
+        "description": "让 AOSP binder 栈在 glibc + libstdc++ 宿主机上编译运行的垫片：libselinux / libvintf 的替身头文件与桩实现、强制注入的 aosp_host_compat.h 以及 stdatomic.h 工具链垫片。"
+      },
+      {
+        "id": "layer:patches",
+        "name": "AOSP 源码补丁层",
+        "description": "对 AOSP libbinder 的 IPCThreadState.cpp 与 ProcessState.cpp 所做的本地改动，放宽 __ANDROID__ 守卫并适配无 SELinux 的桌面内核，从而打通真实的 /dev/binder ioctl 路径。"
+      },
+      {
+        "id": "layer:infrastructure",
+        "name": "运行环境与驱动准备层",
+        "description": "一键构建并运行 demo 的入口脚本、需要 root 的 binder_linux 模块加载与 binderfs 挂载脚本，以及通过 BINDER_CTL_ADD 创建 binder 设备的 binderfs_ctl 工具。"
+      },
+      {
+        "id": "layer:config",
+        "name": "构建配置层",
+        "description": "CMake 构建体系：顶层配置强制 clang 工具链、把 external/ 下的 AOSP 源码编译成六个宿主机静态库并定义 BINDER_ENABLE_KERNEL_IPC，子配置分别产出 compat 桩库与 AIDL 生成的 demo 目标。"
+      },
+      {
+        "id": "layer:documentation",
+        "name": "文档层",
+        "description": "项目说明与移植记录：README 覆盖快速开始、内核 CONFIG 要求与已知限制，PATCHES.md 逐条记录对 AOSP 源码的改动理由。"
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:demo/child_process.cpp": {
+      "name": "child_process.cpp",
+      "type": "file",
+      "summary": "实现 demo 命名空间下的 fork/exec/wait 子进程工具函数，供 demo 程序拉起并管理 servicemanager、service、client 等子进程。子进程刻意继承 stdout/stderr，让服务端与客户端的 IPC 日志实时交织输出。"
+    },
+    "file:demo/child_process.h": {
+      "name": "child_process.h",
+      "type": "file",
+      "summary": "声明 demo 命名空间的子进程管理接口：spawn、stillAlive、waitForExit、terminate、execReplace，是 demo 侧进程编排的公共头文件。"
+    },
+    "file:examples/demo_service.cpp": {
+      "name": "demo_service.cpp",
+      "type": "file",
+      "summary": "示例 binder 服务进程：实现 IDemoService AIDL 接口（加法、回显、排序、回调注册与广播、传递 fd 的 openReport 等），通过 ProcessState 打开 /dev/binder 并以 \"demo.service\" 注册到 servicemanager，然后进入线程池处理事务。若系统中没有 servicemanager，会自行拉起一个，使该服务可独立运行。"
+    },
+    "file:main.cpp": {
+      "name": "main.cpp",
+      "type": "file",
+      "summary": "binder_demo 可执行文件的入口点，只负责解析命令行参数并分派到 demo:: 命名空间：无参数或 demo/all 走完整演示流程，service/client/servicemanager 则以前台方式单独运行对应的伴生二进制。"
+    },
+    "file:demo/runner.h": {
+      "name": "runner.h",
+      "type": "file",
+      "summary": "声明 demo 演示流程的两个公开入口 runAll() 和 runOne(name)，并在注释中给出 servicemanager → demo_service → demo_client 的三方拓扑关系。"
+    },
+    "file:demo/runner.cpp": {
+      "name": "runner.cpp",
+      "type": "file",
+      "summary": "演示流程的核心编排实现：先检查 /dev/binder 是否就绪，再依次拉起 servicemanager 与 demo_service，运行 demo_client 并等待其退出，最后统一清理子进程并输出彩色成功/失败结果。"
+    },
+    "config:CMakeLists.txt": {
+      "name": "CMakeLists.txt",
+      "type": "config",
+      "summary": "顶层 CMake 构建配置：自动探测并强制使用 clang 工具链，把 external/android/ 下逐字节复制的 AOSP android-12 源码编译成 fmtlib/log/cutils/utils/base/binder 六个宿主机静态库，并产出 servicemanager、binderfs_ctl、binder_demo 等可执行文件。关键点是给 binder 目标定义 BINDER_ENABLE_KERNEL_IPC，打开上游默认关闭的 /dev/binder ioctl 路径。"
+    },
+    "document:PATCHES.md": {
+      "name": "PATCHES.md",
+      "type": "document",
+      "summary": "逐条记录本项目对 AOSP 源码所做的全部本地改动：IPCThreadState.cpp 与 ProcessState.cpp 的 __ANDROID__ 守卫翻转、becomeContextManager() 的 SELinux 探测修复，以及用 compat/ 桩件整体替换 libselinux、libvintf 的理由。"
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "项目主文档：说明如何在普通 Linux 宿主机上构建并运行 Android 12 的 binder IPC 栈，涵盖快速开始、手动构建、内核 CONFIG 要求、demo 覆盖的八项 binder 能力、目录结构、clang 强制要求、CLion 调试方式与已知限制。"
+    },
+    "config:compat/CMakeLists.txt": {
+      "name": "CMakeLists.txt",
+      "type": "config",
+      "summary": "compat 目录的构建脚本，把 selinux_stub.cpp 与 vintf_stub.cpp 分别编译成静态库 selinux_stub / vintf_stub，并把 include/ 作为 PUBLIC 头文件目录暴露出去，用于在宿主机上替换 libselinux 和 libvintf。"
+    },
+    "file:compat/include/aosp_host_compat.h": {
+      "name": "aosp_host_compat.h",
+      "type": "file",
+      "summary": "通过 CMake 的 -include 强制注入到每个编译单元的兼容头，预先引入 AOSP 源码在 bionic 下能\"白拿\"、但在 glibc + libstdc++ 下缺失的标准头（C++ 与 C 两套分支）。"
+    },
+    "file:compat/include/selinux/android.h": {
+      "name": "android.h",
+      "type": "file",
+      "summary": "libselinux 中 Android 专用辅助接口的宿主机替身头文件，声明 servicemanager 会用到的 service context handle 获取函数与两个日志回调。"
+    },
+    "file:compat/include/selinux/avc.h": {
+      "name": "avc.h",
+      "type": "file",
+      "summary": "libselinux 访问向量缓存（AVC）的宿主机替身头文件，只声明 selinux_check_access；桩实现无条件返回允许，可用 BINDER_SELINUX_LOG_CHECKS=1 打开逐次检查的追踪日志。"
+    },
+    "file:compat/include/selinux/label.h": {
+      "name": "label.h",
+      "type": "file",
+      "summary": "libselinux label 后端的宿主机替身头文件，定义 SELABEL_CTX_* 常量并声明 selabel_lookup / selabel_close，查询结果恒为宽松（permissive）默认上下文。"
+    },
+    "file:compat/include/selinux/selinux.h": {
+      "name": "selinux.h",
+      "type": "file",
+      "summary": "libselinux 核心 API 的宿主机替身头文件，提供 servicemanager 的 Access.cpp 所需的完整接口面（上下文读取、回调注册、enforce 状态查询）。桌面内核未加载 SELinux 策略，因此所有检查一律放行。"
+    },
+    "file:compat/include/stdatomic.h": {
+      "name": "stdatomic.h",
+      "type": "file",
+      "summary": "复刻 libc++ 行为的 <stdatomic.h> 垫片：在 C++ 下转发到 <atomic> 并把 memory_order_* 等名字 using 到全局命名空间，在 C 下用 #include_next 交给真正的实现。"
+    },
+    "file:compat/include/vintf/VintfObject.h": {
+      "name": "VintfObject.h",
+      "type": "file",
+      "summary": "libvintf 的极简替代头文件，定义 ManifestInstance、HalManifest 与 VintfObject 三个类型，为 libbinder 提供查询 AIDL HAL 实例声明所需的最小接口。"
+    },
+    "file:compat/include/vintf/constants.h": {
+      "name": "constants.h",
+      "type": "file",
+      "summary": "vintf 垫片的常量定义：默认 AIDL 版本号、清单路径环境变量 BINDER_VINTF_MANIFEST，以及 device / framework 两份清单文件的默认路径。"
+    },
+    "file:compat/selinux_stub.cpp": {
+      "name": "selinux_stub.cpp",
+      "type": "file",
+      "summary": "libselinux 的宿主机桩实现：所有进程返回同一个合成安全上下文，所有访问检查一律放行，label 查询返回固定的宽松上下文，并把 SELinux 日志转发到 stderr。"
+    },
+    "file:compat/vintf_stub.cpp": {
+      "name": "vintf_stub.cpp",
+      "type": "file",
+      "summary": "libvintf 的宿主机桩实现：把纯文本格式的 vintf 清单逐行解析成 ManifestInstance 列表，并以进程内静态缓存的方式提供 device / framework 两份 HalManifest 的查询能力。"
+    },
+    "file:demo/binary_paths.cpp": {
+      "name": "binary_paths.cpp",
+      "type": "file",
+      "summary": "运行期定位同伴可执行文件的实现：先通过 /proc/self/exe 求出自身所在目录，再按安装树、构建树、../bin、/usr/local/bin 的顺序依次探测可执行文件。"
+    },
+    "file:demo/binary_paths.h": {
+      "name": "binary_paths.h",
+      "type": "file",
+      "summary": "声明 demo::findBinary 的头文件，供 binder_demo 这类只负责 fork/exec 的进程在运行期找到 servicemanager、demo_service 与 demo_client。"
+    },
+    "config:examples/CMakeLists.txt": {
+      "name": "CMakeLists.txt",
+      "type": "config",
+      "summary": "demo 服务与客户端的构建脚本：用项目自带的 tools/bin/aidl 在构建期把 AIDL 生成 C++ 代码打成 demo_aidl 静态库，再链接出 demo_service 与 demo_client 两个可执行文件。"
+    },
+    "file:examples/aidl/com/example/demo/IDemoCallback.aidl": {
+      "name": "IDemoCallback.aidl",
+      "type": "file",
+      "summary": "客户端实现的回调接口定义：客户端把实例经 binder 传给服务端，服务端反向调用回客户端进程。仅含一个 oneway 的 onEvent 方法。"
+    },
+    "file:examples/aidl/com/example/demo/IDemoService.aidl": {
+      "name": "IDemoService.aidl",
+      "type": "file",
+      "summary": "以 \"demo.service\" 名字注册到 servicemanager 的示例服务接口，覆盖 libbinder 支持的各类事务形态：基本类型、字符串、数组、binder 引用（回调）、oneway 调用与文件描述符传递。"
+    },
+    "file:examples/demo_client.cpp": {
+      "name": "demo_client.cpp",
+      "type": "file",
+      "summary": "示例 binder 客户端：通过 servicemanager 查到 \"demo.service\"，依次演练加法、字符串回显、进程身份、数组、回调注册、oneway 广播、fd 传递与事务计数，并演示服务注册表列举和死亡通知。"
+    },
+    "file:patches/IPCThreadState.patch": {
+      "name": "IPCThreadState.patch",
+      "type": "file",
+      "summary": "针对 AOSP libbinder 的 IPCThreadState.cpp 的补丁，把四处 #if defined(__ANDROID__) 放宽为同时接受 BINDER_ENABLE_KERNEL_IPC，使非 Android 宿主机也能真正执行 BINDER_WRITE_READ 等 ioctl。"
+    },
+    "file:patches/ProcessState.patch": {
+      "name": "ProcessState.patch",
+      "type": "file",
+      "summary": "针对 AOSP libbinder 的 ProcessState.cpp 的补丁：新增 kernelHasSelinux() 探测 /sys/fs/selinux，无 SELinux 的内核上跳过 BINDER_SET_CONTEXT_MGR_EXT 改走旧版 ioctl，并放宽驱动打开失败的致命断言条件。"
+    },
+    "file:scripts/run.sh": {
+      "name": "run.sh",
+      "type": "file",
+      "summary": "一键入口脚本：自动探测可用的 clang 并配置/构建 CMake 工程，若 /dev/binder 缺失则通过 sudo 调用 setup-binder-host.sh 准备驱动，最后 exec binder_demo 运行 demo（支持 servicemanager / service / client 子模式）。"
+    },
+    "file:scripts/setup-binder-host.sh": {
+      "name": "setup-binder-host.sh",
+      "type": "file",
+      "summary": "需要 root 的一次性宿主机环境准备脚本：加载 binder_linux 模块、把 binderfs 挂到 /dev/binderfs、调用 binderfs_ctl 创建 binder/hwbinder/vndbinder 设备，并做软链与 0666 授权；支持 --teardown 回滚。"
+    },
+    "file:tools/binderfs_ctl.cpp": {
+      "name": "binderfs_ctl.cpp",
+      "type": "file",
+      "summary": "小工具：在已挂载的 binderfs 上通过 BINDER_CTL_ADD ioctl 逐个创建 binder 设备并打印其 major:minor；设备已存在时只提示而不视为错误。"
+    }
+  },
+  "totalNodes": 31,
+  "totalEdges": 140
+}

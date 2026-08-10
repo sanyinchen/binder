@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/home/sanyinchen/CLionProjects/binder",
+  "batchFiles": [
+    {"path": "demo/runner.cpp", "language": "cpp", "sizeLines": 122, "fileCategory": "code"},
+    {"path": "demo/runner.h", "language": "c", "sizeLines": 22, "fileCategory": "code"},
+    {"path": "main.cpp", "language": "cpp", "sizeLines": 33, "fileCategory": "code"}
+  ],
+  "batchImportData": {"demo/runner.cpp": ["demo/binary_paths.h", "demo/child_process.h", "demo/runner.h"], "demo/runner.h": [], "main.cpp": ["demo/runner.h"]}
+}

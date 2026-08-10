@@ -1,0 +1,99 @@
+[
+  {
+    "order": 1,
+    "title": "项目全貌：宿主机上的真 binder",
+    "description": "从 README 开始，先弄清这个项目到底在做什么：把 AOSP android-12 的 libbinder 与 servicemanager 用 CMake 基于 glibc 编译，直接在普通 Linux 桌面上跑通内核真实的 binder 驱动，不用容器也不用虚拟机。关键认知是「这不是模拟」——事务真的经过 /dev/binder 与内核 binder_linux 驱动，与 Android 上是同一条路径。README 同时给出了快速开始、内核 CONFIG 要求、demo 覆盖的 binder 能力清单与已知限制，是后续所有步骤的地图。",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "程序入口：main.cpp",
+    "description": "binder_demo 这个可执行文件的入口非常薄：main.cpp 只解析命令行参数，然后分派到 demo:: 命名空间——无参数或 demo/all 走完整演示流程，service/client/servicemanager 则以前台方式单独运行对应的伴生二进制。runner.h 是它唯一的依赖头文件，声明了 runAll() 与 runOne(name) 两个公开入口，注释里还画出了 servicemanager → demo_service → demo_client 的三方拓扑。把「入口」和「编排」拆开，是为了让 main 保持可读，真正的流程逻辑放在下一步。",
+    "nodeIds": ["file:main.cpp", "file:demo/runner.h"],
+    "languageLesson": "C++ 中把「入口分派」与「流程实现」分成 main.cpp 和 runner.h/.cpp，是典型的接口/实现分离：头文件只暴露两个函数签名，调用方无需知道 fork/exec 的任何细节，也让编译依赖保持最小。"
+  },
+  {
+    "order": 3,
+    "title": "三进程编排：runner 与子进程工具",
+    "description": "承接第 2 步的 runAll()，runner.cpp 是整个 demo 的调度中枢：先检查 /dev/binder 是否就绪，再依次拉起 servicemanager 与 demo_service，运行 demo_client 并等待其退出，最后统一清理子进程并打印彩色结果。它把进程操作全部委托给 child_process，后者提供 spawn、stillAlive、waitForExit、terminate、execReplace 一组基于 fork/exec/wait 的封装。注意一个刻意的设计：子进程继承父进程的 stdout/stderr，所以三个进程共用同一个终端，binder 事务发生时服务端与客户端的日志是实时交织的——这正是你运行 demo 时看到的效果。",
+    "nodeIds": ["file:demo/runner.cpp", "file:demo/child_process.h", "file:demo/child_process.cpp"],
+    "languageLesson": "POSIX 的 fork/exec 模型：fork 复制出子进程后，子进程调用 exec 用新程序镜像替换自身。不重定向 stdout/stderr 时子进程直接继承父进程的文件描述符，这就是多进程日志能交织到同一终端的原因；父进程必须 waitpid 回收，否则会留下僵尸进程。"
+  },
+  {
+    "order": 4,
+    "title": "运行期定位伴生二进制",
+    "description": "binder_demo 要 fork/exec 出 servicemanager、demo_service、demo_client 三个独立可执行文件，前提是运行时能找到它们。binary_paths 先用 /proc/self/exe 求出自身所在目录，再按安装树、构建树、../bin、/usr/local/bin 的顺序依次探测。这个小小的查找链让同一个二进制既能在 build/ 里直接跑，也能在安装后正常工作，省掉了硬编码路径或环境变量的麻烦。",
+    "nodeIds": ["file:demo/binary_paths.h", "file:demo/binary_paths.cpp"],
+    "languageLesson": "Linux 上 /proc/self/exe 是指向当前进程可执行文件的符号链接，用 readlink 读取即可获得绝对路径。这是 C/C++ 程序定位「自己在哪」的标准做法，比依赖 argv[0] 可靠得多——argv[0] 可以被调用方任意伪造。"
+  },
+  {
+    "order": 5,
+    "title": "一键入口脚本 run.sh",
+    "description": "run.sh 是给使用者的最外层入口，也是第 2–4 步那条进程链的真正起点：它自动探测可用的 clang 并配置/构建 CMake 工程（首次配置，之后增量），发现 /dev/binder 缺失时通过 sudo 调用 setup-binder-host.sh 准备驱动，最后 exec 出 binder_demo。它同样支持 servicemanager / service / client 三个子模式，直接透传给上一步的 runOne()。值得注意的是权限边界：只有驱动准备那一步需要 root，demo 本身始终以普通用户身份运行。",
+    "nodeIds": ["file:scripts/run.sh"],
+    "languageLesson": "Shell 脚本里 exec 会用新程序替换当前 shell 进程而非新建子进程，这样信号（Ctrl-C）和退出码可以直接传递给目标程序，中间不多一层 shell——包装脚本的惯用收尾写法。"
+  },
+  {
+    "order": 6,
+    "title": "驱动准备：binderfs 与 /dev/binder",
+    "description": "这一步回答了整个项目最核心的问题之一：宿主机上本来没有 /dev/binder，它是怎么来的。setup-binder-host.sh 需要 root，负责加载 binder_linux 内核模块、把 binderfs 挂载到 /dev/binderfs、调用 binderfs_ctl 创建 binder/hwbinder/vndbinder 设备，再做软链并授予 0666 权限——与 Android 上 /dev/binder 的权限一致；支持 --teardown 回滚。binderfs_ctl.cpp 则是配套的小工具，在已挂载的 binderfs 上通过 BINDER_CTL_ADD ioctl 逐个创建设备并打印 major:minor，设备已存在时只提示而不报错，因此脚本可以反复执行。",
+    "nodeIds": ["file:scripts/setup-binder-host.sh", "file:tools/binderfs_ctl.cpp"],
+    "languageLesson": "binderfs 是内核提供的伪文件系统（CONFIG_ANDROID_BINDERFS），挂载后可在运行期按需创建 binder 设备节点，而不必依赖静态的 misc 设备。创建动作通过对控制节点发起 BINDER_CTL_ADD ioctl 完成：ioctl 是 Linux 中向设备驱动下达自定义命令的通用入口，binder 的全部通信（BINDER_WRITE_READ 等）也走这条路径。"
+  },
+  {
+    "order": 7,
+    "title": "构建体系：三个 CMakeLists",
+    "description": "驱动就绪之后，接下来是「怎么把 AOSP 的代码编译出来」。顶层 CMakeLists.txt 自动探测并强制使用 clang 工具链，把 external/android/ 下逐字节复制的 AOSP 源码编译成 fmtlib、log、cutils、utils、base、binder 六个宿主机静态库，并产出 servicemanager、binderfs_ctl、binder_demo 等可执行文件。最关键的一行是给 binder 目标定义 BINDER_ENABLE_KERNEL_IPC——它打开上游默认关闭的 /dev/binder ioctl 路径，是下一步补丁能生效的前提。两个子配置各司其职：compat/ 产出 selinux_stub 与 vintf_stub 两个替身静态库，examples/ 则在构建期用项目自带的 tools/bin/aidl 把 AIDL 生成 C++ 代码打成 demo_aidl 库，再链接出 demo_service 与 demo_client。",
+    "nodeIds": ["config:CMakeLists.txt", "config:compat/CMakeLists.txt", "config:examples/CMakeLists.txt"],
+    "languageLesson": "CMake 中 target_compile_definitions 为特定目标注入宏（如 BINDER_ENABLE_KERNEL_IPC），配合 PUBLIC/PRIVATE 关键字控制传播范围：PUBLIC 会连同头文件目录一起传递给所有链接方，PRIVATE 只作用于目标自身。用宏而不是改源码来开关功能，可以把改动量压到最小。"
+  },
+  {
+    "order": 8,
+    "title": "AOSP 源码补丁：打通真实 ioctl 路径",
+    "description": "只定义宏还不够——AOSP 源码里用 #if defined(__ANDROID__) 把真正的驱动调用挡住了。PATCHES.md 逐条记录了本项目对上游做的全部本地改动及其理由，是这一层的索引。IPCThreadState.patch 把四处 __ANDROID__ 守卫放宽为同时接受第 7 步的 BINDER_ENABLE_KERNEL_IPC，让非 Android 宿主机也能真正执行 BINDER_WRITE_READ 等 ioctl。ProcessState.patch 更进一步，新增 kernelHasSelinux() 探测 /sys/fs/selinux，在没有 SELinux 的桌面内核上跳过 BINDER_SET_CONTEXT_MGR_EXT 改走旧版 ioctl，并放宽驱动打开失败的致命断言。把改动保存成 patch 而非直接改源码，是为了让 external/ 保持与上游逐字节一致、便于对照与升级。",
+    "nodeIds": ["document:PATCHES.md", "file:patches/IPCThreadState.patch", "file:patches/ProcessState.patch"],
+    "languageLesson": "统一 diff 格式（unified diff）以 @@ -旧起始,行数 +新起始,行数 @@ 标记每个 hunk，前缀 - 表示删除、+ 表示新增、空格表示上下文行。把移植改动沉淀为 patch 文件，等于给「我改了什么、为什么改」留下可审计、可重放的记录。"
+  },
+  {
+    "order": 9,
+    "title": "工具链垫片：从 bionic 到 glibc",
+    "description": "补丁解决的是逻辑守卫，这一层解决的是编译期的环境差异。AOSP 源码假定自己运行在 bionic + libc++ 上，很多标准头是「白拿」的；换到 glibc + libstdc++ 后就会大面积缺失。aosp_host_compat.h 通过 CMake 的 -include 被强制注入到每一个编译单元，预先补齐这些头（分 C++ 与 C 两套分支），因此它是全项目扇入最高的文件之一。stdatomic.h 则是一个更精细的例子：在 C++ 下转发到 <atomic> 并把 memory_order_* 等名字 using 到全局命名空间以复刻 libc++ 行为，在 C 下用 #include_next 交还给真正的实现。",
+    "nodeIds": ["file:compat/include/aosp_host_compat.h", "file:compat/include/stdatomic.h"],
+    "languageLesson": "#include_next 是 GCC/Clang 扩展：它跳过当前头文件所在的搜索目录，继续在后续目录中查找同名头。这让你可以在自己的 include 路径里放一个同名「包装头」，先做补充定义再委托给系统真正的实现，而不会陷入自我包含的死循环。"
+  },
+  {
+    "order": 10,
+    "title": "SELinux 替身：让权限检查一律放行",
+    "description": "servicemanager 的 Access.cpp 深度依赖 libselinux，但桌面内核通常没有加载 SELinux 策略。这一层用一整套替身头文件重建了所需的接口面：selinux.h 提供上下文读取、回调注册与 enforce 状态查询等核心 API，avc.h 声明访问向量缓存的 selinux_check_access，label.h 定义 SELABEL_CTX_* 常量与查询函数，android.h 补上 servicemanager 会用到的 Android 专用辅助接口与日志回调。selinux_stub.cpp 是它们的统一实现：所有进程返回同一个合成安全上下文，所有访问检查一律放行，label 查询返回固定的宽松上下文，SELinux 日志转发到 stderr。想观察每次检查都发生了什么，可以打开 BINDER_SELINUX_LOG_CHECKS=1。",
+    "nodeIds": ["file:compat/include/selinux/selinux.h", "file:compat/include/selinux/avc.h", "file:compat/include/selinux/label.h", "file:compat/include/selinux/android.h", "file:compat/selinux_stub.cpp"],
+    "languageLesson": "这是典型的「桩件替换（stub）」移植手法：不修改调用方一行代码，只要提供签名完全一致的头文件与实现并在链接期替换掉原库，调用方就毫无察觉。代价是安全语义被彻底放宽——因此它只适用于宿主机实验环境，绝不能带回真实设备。"
+  },
+  {
+    "order": 11,
+    "title": "vintf 替身：HAL 清单查询",
+    "description": "libbinder 在解析 AIDL HAL 实例时会查询 vintf 清单，这一层用最小接口把它顶上。VintfObject.h 定义 ManifestInstance、HalManifest、VintfObject 三个类型，constants.h 给出默认 AIDL 版本号、清单路径环境变量 BINDER_VINTF_MANIFEST 与 device/framework 两份清单的默认路径。vintf_stub.cpp 的实现刻意简化：把纯文本格式的清单逐行解析成 ManifestInstance 列表，并以进程内静态缓存的方式提供两份 HalManifest 的查询——真实的 libvintf 要解析复杂 XML，这里用几十行文本解析就换来了同等的可用性。至此第 9–11 步共同构成了完整的宿主机兼容层。",
+    "nodeIds": ["file:compat/include/vintf/VintfObject.h", "file:compat/include/vintf/constants.h", "file:compat/vintf_stub.cpp"],
+    "languageLesson": "函数内的 static 局部变量在 C++11 之后保证「线程安全的一次性初始化」（magic static），是实现进程内单例缓存最简洁的写法：清单只在首次查询时读取解析，之后所有调用共享同一份结果。"
+  },
+  {
+    "order": 12,
+    "title": "AIDL 契约：接口即协议",
+    "description": "环境和编译问题都解决之后，终于来到 binder 通信本身。IDemoService.aidl 定义了以 \"demo.service\" 名字注册到 servicemanager 的示例服务接口，刻意覆盖了 libbinder 支持的各类事务形态：基本类型、字符串、数组、binder 引用（回调）、oneway 调用与文件描述符传递。IDemoCallback.aidl 则是反向通道——客户端实现它并把实例经 binder 传给服务端，服务端再回调进客户端进程，只含一个 oneway 的 onEvent。这两个文件在第 7 步的 examples/CMakeLists.txt 里由 tools/bin/aidl 在构建期生成 C++ 代码，服务端与客户端共享同一份生成产物，因此接口签名天然不会对不上。",
+    "nodeIds": ["file:examples/aidl/com/example/demo/IDemoService.aidl", "file:examples/aidl/com/example/demo/IDemoCallback.aidl"],
+    "languageLesson": "AIDL 用接口描述跨进程契约，编译器为其生成 Bn（服务端 stub）与 Bp（客户端 proxy）两侧代码，参数的序列化/反序列化（Parcel 打包）全部自动完成。oneway 标记表示调用不等待返回、无返回值，适合事件广播与回调；普通方法则是同步调用，调用线程会阻塞直到服务端返回。"
+  },
+  {
+    "order": 13,
+    "title": "服务端：注册并进入线程池",
+    "description": "demo_service.cpp 实现了第 12 步的 IDemoService 接口——加法、回显、排序、回调注册与广播、返回 fd 的 openReport 等。它的运行时骨架是典型的 native binder 服务：通过 ProcessState 打开 /dev/binder（这条路径正是第 8 步补丁打通的），以 \"demo.service\" 注册到 servicemanager，然后进入线程池等待事务。一个贴心的设计是它复用了第 3–4 步的 child_process 与 binary_paths：若系统中没有 servicemanager，它会自行拉起一个，因此这个服务可以脱离 binder_demo 独立运行。",
+    "nodeIds": ["file:examples/demo_service.cpp"],
+    "languageLesson": "libbinder 的服务端惯用三段式：ProcessState::self()->startThreadPool() 启动工作线程池，defaultServiceManager()->addService() 注册服务名，IPCThreadState::self()->joinThreadPool() 把当前线程也交给线程池。事务由池中任意线程处理，所以服务实现必须自行保证线程安全。"
+  },
+  {
+    "order": 14,
+    "title": "客户端：完整跑通八项能力",
+    "description": "demo_client.cpp 是整条链路的收尾，也是你在终端里看到的那串输出的来源：它通过 servicemanager 查到 \"demo.service\"，依次演练加法、字符串回显、进程身份（客户端 pid 与服务端 pid 不同，证明确实跨进程）、数组、回调注册、oneway 广播、fd 传递与事务计数，还演示了服务注册表列举与死亡通知。它实现了第 12 步的 IDemoCallback 并把实例交给服务端，从而让「binder 引用可以双向传递」这一点被真实验证。回头看：README 提出的目标（第 1 步）→ 驱动就绪（第 6 步）→ 编译开关与补丁（第 7–8 步）→ 兼容层（第 9–11 步）→ AIDL 契约与服务（第 12–13 步），到这里在一次真实的 /dev/binder 事务中全部合拢。",
+    "nodeIds": ["file:examples/demo_client.cpp"],
+    "languageLesson": "跨进程传递文件描述符是 binder 相较普通 RPC 的独有能力：内核在事务中做 fd 转译，把服务端进程的 fd 复制成客户端进程 fd 表里的一个新号码，两端指向同一个打开文件。死亡通知（DeathRecipient）则让客户端在服务进程崩溃时收到回调，而不是永远持有一个失效的代理。"
+  }
+]

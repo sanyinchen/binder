@@ -1,0 +1,987 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "demo/child_process.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "spawn",
+          "startLine": 12,
+          "endLine": 24,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "stillAlive",
+          "startLine": 26,
+          "endLine": 29,
+          "params": [
+            "pid"
+          ]
+        },
+        {
+          "name": "waitForExit",
+          "startLine": 31,
+          "endLine": 35,
+          "params": [
+            "pid"
+          ]
+        },
+        {
+          "name": "terminate",
+          "startLine": 37,
+          "endLine": 43,
+          "params": [
+            "pid"
+          ]
+        },
+        {
+          "name": "execReplace",
+          "startLine": 45,
+          "endLine": 49,
+          "params": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "spawn",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "stillAlive",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "waitForExit",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "terminate",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "execReplace",
+          "line": 45,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "spawn",
+          "callee": "fork",
+          "lineNumber": 13
+        },
+        {
+          "caller": "spawn",
+          "callee": "fprintf",
+          "lineNumber": 15
+        },
+        {
+          "caller": "spawn",
+          "callee": "strerror",
+          "lineNumber": 15
+        },
+        {
+          "caller": "spawn",
+          "callee": "execl",
+          "lineNumber": 19
+        },
+        {
+          "caller": "spawn",
+          "callee": "c_str",
+          "lineNumber": 19
+        },
+        {
+          "caller": "spawn",
+          "callee": "c_str",
+          "lineNumber": 19
+        },
+        {
+          "caller": "spawn",
+          "callee": "fprintf",
+          "lineNumber": 20
+        },
+        {
+          "caller": "spawn",
+          "callee": "c_str",
+          "lineNumber": 20
+        },
+        {
+          "caller": "spawn",
+          "callee": "strerror",
+          "lineNumber": 20
+        },
+        {
+          "caller": "spawn",
+          "callee": "_exit",
+          "lineNumber": 21
+        },
+        {
+          "caller": "stillAlive",
+          "callee": "waitpid",
+          "lineNumber": 28
+        },
+        {
+          "caller": "waitForExit",
+          "callee": "waitpid",
+          "lineNumber": 33
+        },
+        {
+          "caller": "waitForExit",
+          "callee": "WIFEXITED",
+          "lineNumber": 34
+        },
+        {
+          "caller": "waitForExit",
+          "callee": "WEXITSTATUS",
+          "lineNumber": 34
+        },
+        {
+          "caller": "terminate",
+          "callee": "kill",
+          "lineNumber": 39
+        },
+        {
+          "caller": "terminate",
+          "callee": "waitpid",
+          "lineNumber": 41
+        },
+        {
+          "caller": "execReplace",
+          "callee": "execl",
+          "lineNumber": 46
+        },
+        {
+          "caller": "execReplace",
+          "callee": "c_str",
+          "lineNumber": 46
+        },
+        {
+          "caller": "execReplace",
+          "callee": "c_str",
+          "lineNumber": 46
+        },
+        {
+          "caller": "execReplace",
+          "callee": "fprintf",
+          "lineNumber": 47
+        },
+        {
+          "caller": "execReplace",
+          "callee": "c_str",
+          "lineNumber": 47
+        },
+        {
+          "caller": "execReplace",
+          "callee": "strerror",
+          "lineNumber": 47
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "demo/child_process.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "examples/demo_service.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 258,
+      "nonEmptyLines": 218,
+      "functions": [
+        {
+          "name": "add",
+          "startLine": 53,
+          "endLine": 58,
+          "params": [
+            "a",
+            "b",
+            "out"
+          ]
+        },
+        {
+          "name": "echo",
+          "startLine": 60,
+          "endLine": 65,
+          "params": [
+            "message",
+            "out"
+          ]
+        },
+        {
+          "name": "getServicePid",
+          "startLine": 67,
+          "endLine": 71,
+          "params": [
+            "out"
+          ]
+        },
+        {
+          "name": "sortDescending",
+          "startLine": 73,
+          "endLine": 80,
+          "params": [
+            "values",
+            "out"
+          ]
+        },
+        {
+          "name": "registerCallback",
+          "startLine": 82,
+          "endLine": 91,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "unregisterCallback",
+          "startLine": 93,
+          "endLine": 104,
+          "params": [
+            "callback"
+          ]
+        },
+        {
+          "name": "broadcast",
+          "startLine": 106,
+          "endLine": 121,
+          "params": [
+            "event"
+          ]
+        },
+        {
+          "name": "openReport",
+          "startLine": 123,
+          "endLine": 142,
+          "params": [
+            "out"
+          ]
+        },
+        {
+          "name": "getTransactionCount",
+          "startLine": 144,
+          "endLine": 147,
+          "params": [
+            "out"
+          ]
+        },
+        {
+          "name": "count",
+          "startLine": 150,
+          "endLine": 150,
+          "params": []
+        },
+        {
+          "name": "serviceManagerIsUp",
+          "startLine": 180,
+          "endLine": 182,
+          "params": []
+        },
+        {
+          "name": "stopSpawnedServiceManager",
+          "startLine": 184,
+          "endLine": 186,
+          "params": []
+        },
+        {
+          "name": "onSignal",
+          "startLine": 188,
+          "endLine": 191,
+          "params": [
+            "sig"
+          ]
+        },
+        {
+          "name": "ensureServiceManager",
+          "startLine": 193,
+          "endLine": 230,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 234,
+          "endLine": 258,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "DemoService",
+          "startLine": 51,
+          "endLine": 165,
+          "methods": [
+            "add",
+            "echo",
+            "getServicePid",
+            "sortDescending",
+            "registerCallback",
+            "unregisterCallback",
+            "broadcast",
+            "openReport",
+            "getTransactionCount",
+            "count"
+          ],
+          "properties": [
+            "mLock",
+            "mCallbacks",
+            "mCount"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "add",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "echo",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "getServicePid",
+          "line": 67,
+          "isDefault": false
+        },
+        {
+          "name": "sortDescending",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "registerCallback",
+          "line": 82,
+          "isDefault": false
+        },
+        {
+          "name": "unregisterCallback",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "broadcast",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "openReport",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "getTransactionCount",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "DemoService",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "serviceManagerIsUp",
+          "line": 180,
+          "isDefault": false
+        },
+        {
+          "name": "stopSpawnedServiceManager",
+          "line": 184,
+          "isDefault": false
+        },
+        {
+          "name": "onSignal",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "ensureServiceManager",
+          "line": 193,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 234,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "add",
+          "callee": "count",
+          "lineNumber": 54
+        },
+        {
+          "caller": "add",
+          "callee": "logCaller",
+          "lineNumber": 55
+        },
+        {
+          "caller": "add",
+          "callee": "Status::ok",
+          "lineNumber": 57
+        },
+        {
+          "caller": "echo",
+          "callee": "count",
+          "lineNumber": 61
+        },
+        {
+          "caller": "echo",
+          "callee": "logCaller",
+          "lineNumber": 62
+        },
+        {
+          "caller": "echo",
+          "callee": "c_str",
+          "lineNumber": 62
+        },
+        {
+          "caller": "echo",
+          "callee": "Status::ok",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getServicePid",
+          "callee": "count",
+          "lineNumber": 68
+        },
+        {
+          "caller": "getServicePid",
+          "callee": "static_cast<int32_t>",
+          "lineNumber": 69
+        },
+        {
+          "caller": "getServicePid",
+          "callee": "getpid",
+          "lineNumber": 69
+        },
+        {
+          "caller": "getServicePid",
+          "callee": "Status::ok",
+          "lineNumber": 70
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "count",
+          "lineNumber": 75
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "logCaller",
+          "lineNumber": 76
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "size",
+          "lineNumber": 76
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "std::sort",
+          "lineNumber": 78
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "begin",
+          "lineNumber": 78
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "end",
+          "lineNumber": 78
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "std::greater<int32_t>",
+          "lineNumber": 78
+        },
+        {
+          "caller": "sortDescending",
+          "callee": "Status::ok",
+          "lineNumber": 79
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "count",
+          "lineNumber": 83
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "Status::fromExceptionCode",
+          "lineNumber": 85
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "push_back",
+          "lineNumber": 88
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "logCaller",
+          "lineNumber": 89
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "size",
+          "lineNumber": 89
+        },
+        {
+          "caller": "registerCallback",
+          "callee": "Status::ok",
+          "lineNumber": 90
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "count",
+          "lineNumber": 94
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "IDemoCallback::asBinder",
+          "lineNumber": 97
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "erase",
+          "lineNumber": 98
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "std::remove_if",
+          "lineNumber": 98
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "begin",
+          "lineNumber": 98
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "end",
+          "lineNumber": 98
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "IDemoCallback::asBinder",
+          "lineNumber": 100
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "end",
+          "lineNumber": 102
+        },
+        {
+          "caller": "unregisterCallback",
+          "callee": "Status::ok",
+          "lineNumber": 103
+        },
+        {
+          "caller": "broadcast",
+          "callee": "count",
+          "lineNumber": 107
+        },
+        {
+          "caller": "broadcast",
+          "callee": "printf",
+          "lineNumber": 114
+        },
+        {
+          "caller": "broadcast",
+          "callee": "c_str",
+          "lineNumber": 114
+        },
+        {
+          "caller": "broadcast",
+          "callee": "size",
+          "lineNumber": 115
+        },
+        {
+          "caller": "broadcast",
+          "callee": "fflush",
+          "lineNumber": 116
+        },
+        {
+          "caller": "broadcast",
+          "callee": "onEvent",
+          "lineNumber": 118
+        },
+        {
+          "caller": "broadcast",
+          "callee": "Status::ok",
+          "lineNumber": 120
+        },
+        {
+          "caller": "openReport",
+          "callee": "count",
+          "lineNumber": 124
+        },
+        {
+          "caller": "openReport",
+          "callee": "tmpfile",
+          "lineNumber": 126
+        },
+        {
+          "caller": "openReport",
+          "callee": "Status::fromExceptionCode",
+          "lineNumber": 128
+        },
+        {
+          "caller": "openReport",
+          "callee": "fprintf",
+          "lineNumber": 130
+        },
+        {
+          "caller": "openReport",
+          "callee": "getpid",
+          "lineNumber": 130
+        },
+        {
+          "caller": "openReport",
+          "callee": "fprintf",
+          "lineNumber": 131
+        },
+        {
+          "caller": "openReport",
+          "callee": "load",
+          "lineNumber": 131
+        },
+        {
+          "caller": "openReport",
+          "callee": "fflush",
+          "lineNumber": 132
+        },
+        {
+          "caller": "openReport",
+          "callee": "rewind",
+          "lineNumber": 133
+        },
+        {
+          "caller": "openReport",
+          "callee": "dup",
+          "lineNumber": 135
+        },
+        {
+          "caller": "openReport",
+          "callee": "fileno",
+          "lineNumber": 135
+        },
+        {
+          "caller": "openReport",
+          "callee": "fclose",
+          "lineNumber": 136
+        },
+        {
+          "caller": "openReport",
+          "callee": "Status::fromExceptionCode",
+          "lineNumber": 138
+        },
+        {
+          "caller": "openReport",
+          "callee": "ParcelFileDescriptor",
+          "lineNumber": 140
+        },
+        {
+          "caller": "openReport",
+          "callee": "android::base::unique_fd",
+          "lineNumber": 140
+        },
+        {
+          "caller": "openReport",
+          "callee": "Status::ok",
+          "lineNumber": 141
+        },
+        {
+          "caller": "getTransactionCount",
+          "callee": "load",
+          "lineNumber": 145
+        },
+        {
+          "caller": "getTransactionCount",
+          "callee": "Status::ok",
+          "lineNumber": 146
+        },
+        {
+          "caller": "count",
+          "callee": "fetch_add",
+          "lineNumber": 150
+        },
+        {
+          "caller": "logCaller",
+          "callee": "IPCThreadState::self",
+          "lineNumber": 155
+        },
+        {
+          "caller": "logCaller",
+          "callee": "printf",
+          "lineNumber": 156
+        },
+        {
+          "caller": "logCaller",
+          "callee": "getCallingPid",
+          "lineNumber": 156
+        },
+        {
+          "caller": "logCaller",
+          "callee": "getCallingUid",
+          "lineNumber": 156
+        },
+        {
+          "caller": "logCaller",
+          "callee": "printf",
+          "lineNumber": 157
+        },
+        {
+          "caller": "logCaller",
+          "callee": "printf",
+          "lineNumber": 158
+        },
+        {
+          "caller": "logCaller",
+          "callee": "fflush",
+          "lineNumber": 159
+        },
+        {
+          "caller": "serviceManagerIsUp",
+          "callee": "getContextObject",
+          "lineNumber": 181
+        },
+        {
+          "caller": "serviceManagerIsUp",
+          "callee": "ProcessState::self",
+          "lineNumber": 181
+        },
+        {
+          "caller": "stopSpawnedServiceManager",
+          "callee": "demo::terminate",
+          "lineNumber": 185
+        },
+        {
+          "caller": "onSignal",
+          "callee": "stopSpawnedServiceManager",
+          "lineNumber": 189
+        },
+        {
+          "caller": "onSignal",
+          "callee": "_exit",
+          "lineNumber": 190
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "serviceManagerIsUp",
+          "lineNumber": 194
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "demo::findBinary",
+          "lineNumber": 196
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "empty",
+          "lineNumber": 197
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "fprintf",
+          "lineNumber": 198
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "printf",
+          "lineNumber": 202
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "c_str",
+          "lineNumber": 202
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "fflush",
+          "lineNumber": 203
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "demo::spawn",
+          "lineNumber": 205
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "atexit",
+          "lineNumber": 209
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "signal",
+          "lineNumber": 210
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "signal",
+          "lineNumber": 211
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "usleep",
+          "lineNumber": 214
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "demo::stillAlive",
+          "lineNumber": 215
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "fprintf",
+          "lineNumber": 216
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "serviceManagerIsUp",
+          "lineNumber": 220
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "printf",
+          "lineNumber": 221
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "fflush",
+          "lineNumber": 222
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "fprintf",
+          "lineNumber": 227
+        },
+        {
+          "caller": "ensureServiceManager",
+          "callee": "stopSpawnedServiceManager",
+          "lineNumber": 228
+        },
+        {
+          "caller": "main",
+          "callee": "ProcessState::self",
+          "lineNumber": 236
+        },
+        {
+          "caller": "main",
+          "callee": "setThreadPoolMaxThreadCount",
+          "lineNumber": 237
+        },
+        {
+          "caller": "main",
+          "callee": "sp<DemoService>::make",
+          "lineNumber": 239
+        },
+        {
+          "caller": "main",
+          "callee": "ensureServiceManager",
+          "lineNumber": 241
+        },
+        {
+          "caller": "main",
+          "callee": "android::defaultServiceManager",
+          "lineNumber": 243
+        },
+        {
+          "caller": "main",
+          "callee": "addService",
+          "lineNumber": 245
+        },
+        {
+          "caller": "main",
+          "callee": "String16",
+          "lineNumber": 245
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 247
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 251
+        },
+        {
+          "caller": "main",
+          "callee": "getpid",
+          "lineNumber": 251
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 252
+        },
+        {
+          "caller": "main",
+          "callee": "fflush",
+          "lineNumber": 253
+        },
+        {
+          "caller": "main",
+          "callee": "startThreadPool",
+          "lineNumber": 255
+        },
+        {
+          "caller": "main",
+          "callee": "joinThreadPool",
+          "lineNumber": 256
+        },
+        {
+          "caller": "main",
+          "callee": "IPCThreadState::self",
+          "lineNumber": 256
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 15,
+        "functionCount": 15,
+        "classCount": 1
+      }
+    }
+  ]
+}

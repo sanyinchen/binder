@@ -1,0 +1,82 @@
+[
+ {
+  "id": "layer:entry",
+  "name": "入口与演示编排层",
+  "description": "binder_demo 可执行文件的命令行入口，以及 demo/ 下负责定位伴生二进制、fork/exec 拉起 servicemanager 与 demo_service/demo_client 并统一清理子进程的编排代码。",
+  "nodeIds": [
+   "file:main.cpp",
+   "file:demo/runner.h",
+   "file:demo/runner.cpp",
+   "file:demo/child_process.h",
+   "file:demo/child_process.cpp",
+   "file:demo/binary_paths.h",
+   "file:demo/binary_paths.cpp"
+  ]
+ },
+ {
+  "id": "layer:api",
+  "name": "AIDL 契约与示例服务层",
+  "description": "以 AIDL 定义的 IDemoService / IDemoCallback 接口契约，以及注册到 servicemanager 的示例服务端与调用它的客户端，覆盖基本类型、数组、binder 引用回调、oneway 与 fd 传递等事务形态。",
+  "nodeIds": [
+   "file:examples/aidl/com/example/demo/IDemoService.aidl",
+   "file:examples/aidl/com/example/demo/IDemoCallback.aidl",
+   "file:examples/demo_service.cpp",
+   "file:examples/demo_client.cpp"
+  ]
+ },
+ {
+  "id": "layer:compat",
+  "name": "宿主机兼容层",
+  "description": "让 AOSP binder 栈在 glibc + libstdc++ 宿主机上编译运行的垫片：libselinux / libvintf 的替身头文件与桩实现、强制注入的 aosp_host_compat.h 以及 stdatomic.h 工具链垫片。",
+  "nodeIds": [
+   "file:compat/include/aosp_host_compat.h",
+   "file:compat/include/stdatomic.h",
+   "file:compat/include/selinux/selinux.h",
+   "file:compat/include/selinux/android.h",
+   "file:compat/include/selinux/avc.h",
+   "file:compat/include/selinux/label.h",
+   "file:compat/include/vintf/VintfObject.h",
+   "file:compat/include/vintf/constants.h",
+   "file:compat/selinux_stub.cpp",
+   "file:compat/vintf_stub.cpp"
+  ]
+ },
+ {
+  "id": "layer:patches",
+  "name": "AOSP 源码补丁层",
+  "description": "对 AOSP libbinder 的 IPCThreadState.cpp 与 ProcessState.cpp 所做的本地改动，放宽 __ANDROID__ 守卫并适配无 SELinux 的桌面内核，从而打通真实的 /dev/binder ioctl 路径。",
+  "nodeIds": [
+   "file:patches/IPCThreadState.patch",
+   "file:patches/ProcessState.patch"
+  ]
+ },
+ {
+  "id": "layer:infrastructure",
+  "name": "运行环境与驱动准备层",
+  "description": "一键构建并运行 demo 的入口脚本、需要 root 的 binder_linux 模块加载与 binderfs 挂载脚本，以及通过 BINDER_CTL_ADD 创建 binder 设备的 binderfs_ctl 工具。",
+  "nodeIds": [
+   "file:scripts/run.sh",
+   "file:scripts/setup-binder-host.sh",
+   "file:tools/binderfs_ctl.cpp"
+  ]
+ },
+ {
+  "id": "layer:config",
+  "name": "构建配置层",
+  "description": "CMake 构建体系：顶层配置强制 clang 工具链、把 external/ 下的 AOSP 源码编译成六个宿主机静态库并定义 BINDER_ENABLE_KERNEL_IPC，子配置分别产出 compat 桩库与 AIDL 生成的 demo 目标。",
+  "nodeIds": [
+   "config:CMakeLists.txt",
+   "config:compat/CMakeLists.txt",
+   "config:examples/CMakeLists.txt"
+  ]
+ },
+ {
+  "id": "layer:documentation",
+  "name": "文档层",
+  "description": "项目说明与移植记录：README 覆盖快速开始、内核 CONFIG 要求与已知限制，PATCHES.md 逐条记录对 AOSP 源码的改动理由。",
+  "nodeIds": [
+   "document:README.md",
+   "document:PATCHES.md"
+  ]
+ }
+]

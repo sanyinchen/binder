@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 31,
+  "totalBatches": 4,
+  "exportsByPath": {
+    "compat/include/aosp_host_compat.h": [],
+    "compat/include/selinux/android.h": [],
+    "compat/include/selinux/avc.h": [],
+    "compat/include/selinux/label.h": [],
+    "compat/include/selinux/selinux.h": [],
+    "compat/include/stdatomic.h": [],
+    "compat/include/vintf/VintfObject.h": [
+      "ManifestInstance",
+      "format",
+      "updatableViaApex",
+      "ManifestInstance",
+      "loadFrom",
+      "hasAidlInstance",
+      "getAidlInstances",
+      "forEachInstance",
+      "add",
+      "HalManifest",
+      "GetDeviceHalManifest",
+      "GetFrameworkHalManifest",
+      "VintfObject"
+    ],
+    "compat/include/vintf/constants.h": [],
+    "compat/selinux_stub.cpp": [
+      "selabel_handle_impl",
+      "logChecks"
+    ],
+    "compat/vintf_stub.cpp": [
+      "trim",
+      "parseLine",
+      "loadFrom",
+      "hasAidlInstance",
+      "getAidlInstances",
+      "forEachInstance",
+      "GetDeviceHalManifest",
+      "GetFrameworkHalManifest"
+    ],
+    "demo/binary_paths.cpp": [
+      "isExecutable",
+      "selfDir",
+      "findBinary"
+    ],
+    "demo/binary_paths.h": [],
+    "demo/child_process.cpp": [
+      "spawn",
+      "stillAlive",
+      "waitForExit",
+      "terminate",
+      "execReplace"
+    ],
+    "demo/child_process.h": [],
+    "demo/runner.cpp": [
+      "cleanup",
+      "onSignal",
+      "banner",
+      "binderIsReady",
+      "startAndSettle",
+      "runAll",
+      "runOne"
+    ],
+    "demo/runner.h": [],
+    "examples/aidl/com/example/demo/IDemoCallback.aidl": [],
+    "examples/aidl/com/example/demo/IDemoService.aidl": [],
+    "examples/demo_client.cpp": [
+      "section",
+      "onEvent",
+      "Callback",
+      "binderDied",
+      "DeathRecipient",
+      "main"
+    ],
+    "examples/demo_service.cpp": [
+      "add",
+      "echo",
+      "getServicePid",
+      "sortDescending",
+      "registerCallback",
+      "unregisterCallback",
+      "broadcast",
+      "openReport",
+      "getTransactionCount",
+      "DemoService",
+      "serviceManagerIsUp",
+      "stopSpawnedServiceManager",
+      "onSignal",
+      "ensureServiceManager",
+      "main"
+    ],
+    "main.cpp": [
+      "main"
+    ],
+    "patches/IPCThreadState.patch": [],
+    "patches/ProcessState.patch": [],
+    "tools/binderfs_ctl.cpp": [
+      "main"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "demo/child_process.cpp",
+          "language": "cpp",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "demo/child_process.h",
+          "language": "c",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/demo_service.cpp",
+          "language": "cpp",
+          "sizeLines": 258,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "demo/child_process.cpp": [
+          "demo/child_process.h"
+        ],
+        "demo/child_process.h": [],
+        "examples/demo_service.cpp": [
+          "demo/binary_paths.h",
+          "demo/child_process.h"
+        ]
+      },
+      "neighborMap": {
+        "demo/child_process.h": [
+          {
+            "path": "demo/runner.cpp",
+            "batchIndex": 2,
+            "symbols": [
+              "cleanup",
+              "onSignal",
+              "banner",
+              "binderIsReady",
+              "startAndSettle",
+              "runAll",
+              "runOne"
+            ]
+          }
+        ],
+        "examples/demo_service.cpp": [
+          {
+            "path": "demo/binary_paths.h",
+            "batchIndex": 4,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "demo/runner.cpp",
+          "language": "cpp",
+          "sizeLines": 122,
+          "fileCategory": "code"
+        },
+        {
+          "path": "demo/runner.h",
+          "language": "c",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        },
+        {
+          "path": "main.cpp",
+          "language": "cpp",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "demo/runner.cpp": [
+          "demo/binary_paths.h",
+          "demo/child_process.h",
+          "demo/runner.h"
+        ],
+        "demo/runner.h": [],
+        "main.cpp": [
+          "demo/runner.h"
+        ]
+      },
+      "neighborMap": {
+        "demo/runner.cpp": [
+          {
+            "path": "demo/binary_paths.h",
+            "batchIndex": 4,
+            "symbols": []
+          },
+          {
+            "path": "demo/child_process.h",
+            "batchIndex": 1,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "CMakeLists.txt",
+          "language": "txt",
+          "sizeLines": 362,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "PATCHES.md",
+          "language": "markdown",
+          "sizeLines": 75,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 199,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "CMakeLists.txt": [],
+        "PATCHES.md": [],
+        "README.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "compat/CMakeLists.txt",
+          "language": "txt",
+          "sizeLines": 8,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "compat/include/aosp_host_compat.h",
+          "language": "c",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/selinux/android.h",
+          "language": "c",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/selinux/avc.h",
+          "language": "c",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/selinux/label.h",
+          "language": "c",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/selinux/selinux.h",
+          "language": "c",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/stdatomic.h",
+          "language": "c",
+          "sizeLines": 107,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/vintf/VintfObject.h",
+          "language": "c",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/include/vintf/constants.h",
+          "language": "c",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/selinux_stub.cpp",
+          "language": "cpp",
+          "sizeLines": 143,
+          "fileCategory": "code"
+        },
+        {
+          "path": "compat/vintf_stub.cpp",
+          "language": "cpp",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "demo/binary_paths.cpp",
+          "language": "cpp",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        },
+        {
+          "path": "demo/binary_paths.h",
+          "language": "c",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/CMakeLists.txt",
+          "language": "txt",
+          "sizeLines": 41,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "examples/aidl/com/example/demo/IDemoCallback.aidl",
+          "language": "aidl",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/aidl/com/example/demo/IDemoService.aidl",
+          "language": "aidl",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "examples/demo_client.cpp",
+          "language": "cpp",
+          "sizeLines": 171,
+          "fileCategory": "code"
+        },
+        {
+          "path": "patches/IPCThreadState.patch",
+          "language": "patch",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "patches/ProcessState.patch",
+          "language": "patch",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "scripts/run.sh",
+          "language": "shell",
+          "sizeLines": 95,
+          "fileCategory": "script"
+        },
+        {
+          "path": "scripts/setup-binder-host.sh",
+          "language": "shell",
+          "sizeLines": 104,
+          "fileCategory": "script"
+        },
+        {
+          "path": "tools/binderfs_ctl.cpp",
+          "language": "cpp",
+          "sizeLines": 71,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "compat/CMakeLists.txt": [],
+        "compat/include/aosp_host_compat.h": [],
+        "compat/include/selinux/android.h": [],
+        "compat/include/selinux/avc.h": [],
+        "compat/include/selinux/label.h": [],
+        "compat/include/selinux/selinux.h": [],
+        "compat/include/stdatomic.h": [],
+        "compat/include/vintf/VintfObject.h": [],
+        "compat/include/vintf/constants.h": [],
+        "compat/selinux_stub.cpp": [],
+        "compat/vintf_stub.cpp": [],
+        "demo/binary_paths.cpp": [
+          "demo/binary_paths.h"
+        ],
+        "demo/binary_paths.h": [],
+        "examples/CMakeLists.txt": [],
+        "examples/aidl/com/example/demo/IDemoCallback.aidl": [],
+        "examples/aidl/com/example/demo/IDemoService.aidl": [],
+        "examples/demo_client.cpp": [],
+        "patches/IPCThreadState.patch": [],
+        "patches/ProcessState.patch": [],
+        "scripts/run.sh": [],
+        "scripts/setup-binder-host.sh": [],
+        "tools/binderfs_ctl.cpp": []
+      },
+      "neighborMap": {
+        "demo/binary_paths.h": [
+          {
+            "path": "demo/runner.cpp",
+            "batchIndex": 2,
+            "symbols": [
+              "cleanup",
+              "onSignal",
+              "banner",
+              "binderIsReady",
+              "startAndSettle",
+              "runAll",
+              "runOne"
+            ]
+          },
+          {
+            "path": "examples/demo_service.cpp",
+            "batchIndex": 1,
+            "symbols": [
+              "add",
+              "echo",
+              "getServicePid",
+              "sortDescending",
+              "registerCallback",
+              "unregisterCallback",
+              "broadcast",
+              "openReport",
+              "getTransactionCount",
+              "DemoService",
+              "serviceManagerIsUp",
+              "stopSpawnedServiceManager",
+              "onSignal",
+              "ensureServiceManager",
+              "main"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

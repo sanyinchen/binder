@@ -1,0 +1,9 @@
+{
+  "projectRoot": "/home/sanyinchen/CLionProjects/binder",
+  "batchFiles": [
+    {"path": "CMakeLists.txt", "language": "txt", "sizeLines": 362, "fileCategory": "docs"},
+    {"path": "PATCHES.md", "language": "markdown", "sizeLines": 75, "fileCategory": "docs"},
+    {"path": "README.md", "language": "markdown", "sizeLines": 199, "fileCategory": "docs"}
+  ],
+  "batchImportData": {"CMakeLists.txt": [], "PATCHES.md": [], "README.md": []}
+}

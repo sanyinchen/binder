@@ -1,0 +1,425 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "demo/runner.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 122,
+      "nonEmptyLines": 101,
+      "functions": [
+        {
+          "name": "cleanup",
+          "startLine": 21,
+          "endLine": 24,
+          "params": []
+        },
+        {
+          "name": "onSignal",
+          "startLine": 26,
+          "endLine": 29,
+          "params": [
+            "sig"
+          ]
+        },
+        {
+          "name": "banner",
+          "startLine": 31,
+          "endLine": 34,
+          "params": [
+            "text"
+          ]
+        },
+        {
+          "name": "binderIsReady",
+          "startLine": 36,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "startAndSettle",
+          "startLine": 44,
+          "endLine": 56,
+          "params": [
+            "name",
+            "path",
+            "slot"
+          ]
+        },
+        {
+          "name": "runAll",
+          "startLine": 60,
+          "endLine": 111,
+          "params": []
+        },
+        {
+          "name": "runOne",
+          "startLine": 113,
+          "endLine": 120,
+          "params": [
+            "name"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cleanup",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "onSignal",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "banner",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "binderIsReady",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "startAndSettle",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "runAll",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "runOne",
+          "line": 113,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cleanup",
+          "callee": "terminate",
+          "lineNumber": 22
+        },
+        {
+          "caller": "cleanup",
+          "callee": "terminate",
+          "lineNumber": 23
+        },
+        {
+          "caller": "onSignal",
+          "callee": "cleanup",
+          "lineNumber": 27
+        },
+        {
+          "caller": "onSignal",
+          "callee": "_exit",
+          "lineNumber": 28
+        },
+        {
+          "caller": "banner",
+          "callee": "printf",
+          "lineNumber": 32
+        },
+        {
+          "caller": "banner",
+          "callee": "fflush",
+          "lineNumber": 33
+        },
+        {
+          "caller": "binderIsReady",
+          "callee": "access",
+          "lineNumber": 37
+        },
+        {
+          "caller": "binderIsReady",
+          "callee": "fprintf",
+          "lineNumber": 38
+        },
+        {
+          "caller": "binderIsReady",
+          "callee": "fprintf",
+          "lineNumber": 39
+        },
+        {
+          "caller": "startAndSettle",
+          "callee": "spawn",
+          "lineNumber": 45
+        },
+        {
+          "caller": "startAndSettle",
+          "callee": "usleep",
+          "lineNumber": 48
+        },
+        {
+          "caller": "startAndSettle",
+          "callee": "stillAlive",
+          "lineNumber": 49
+        },
+        {
+          "caller": "startAndSettle",
+          "callee": "fprintf",
+          "lineNumber": 50
+        },
+        {
+          "caller": "startAndSettle",
+          "callee": "printf",
+          "lineNumber": 54
+        },
+        {
+          "caller": "runAll",
+          "callee": "binderIsReady",
+          "lineNumber": 61
+        },
+        {
+          "caller": "runAll",
+          "callee": "findBinary",
+          "lineNumber": 63
+        },
+        {
+          "caller": "runAll",
+          "callee": "findBinary",
+          "lineNumber": 64
+        },
+        {
+          "caller": "runAll",
+          "callee": "findBinary",
+          "lineNumber": 65
+        },
+        {
+          "caller": "runAll",
+          "callee": "empty",
+          "lineNumber": 72
+        },
+        {
+          "caller": "runAll",
+          "callee": "fprintf",
+          "lineNumber": 73
+        },
+        {
+          "caller": "runAll",
+          "callee": "signal",
+          "lineNumber": 78
+        },
+        {
+          "caller": "runAll",
+          "callee": "signal",
+          "lineNumber": 79
+        },
+        {
+          "caller": "runAll",
+          "callee": "banner",
+          "lineNumber": 81
+        },
+        {
+          "caller": "runAll",
+          "callee": "startAndSettle",
+          "lineNumber": 82
+        },
+        {
+          "caller": "runAll",
+          "callee": "cleanup",
+          "lineNumber": 83
+        },
+        {
+          "caller": "runAll",
+          "callee": "banner",
+          "lineNumber": 87
+        },
+        {
+          "caller": "runAll",
+          "callee": "startAndSettle",
+          "lineNumber": 88
+        },
+        {
+          "caller": "runAll",
+          "callee": "cleanup",
+          "lineNumber": 89
+        },
+        {
+          "caller": "runAll",
+          "callee": "banner",
+          "lineNumber": 93
+        },
+        {
+          "caller": "runAll",
+          "callee": "spawn",
+          "lineNumber": 94
+        },
+        {
+          "caller": "runAll",
+          "callee": "cleanup",
+          "lineNumber": 96
+        },
+        {
+          "caller": "runAll",
+          "callee": "waitForExit",
+          "lineNumber": 99
+        },
+        {
+          "caller": "runAll",
+          "callee": "cleanup",
+          "lineNumber": 101
+        },
+        {
+          "caller": "runAll",
+          "callee": "printf",
+          "lineNumber": 103
+        },
+        {
+          "caller": "runAll",
+          "callee": "printf",
+          "lineNumber": 105
+        },
+        {
+          "caller": "runAll",
+          "callee": "printf",
+          "lineNumber": 107
+        },
+        {
+          "caller": "runAll",
+          "callee": "fflush",
+          "lineNumber": 109
+        },
+        {
+          "caller": "runOne",
+          "callee": "findBinary",
+          "lineNumber": 114
+        },
+        {
+          "caller": "runOne",
+          "callee": "empty",
+          "lineNumber": 115
+        },
+        {
+          "caller": "runOne",
+          "callee": "fprintf",
+          "lineNumber": 116
+        },
+        {
+          "caller": "runOne",
+          "callee": "execReplace",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "demo/runner.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "main.cpp",
+      "language": "cpp",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 23,
+          "endLine": 33,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "demo::runAll",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 27
+        },
+        {
+          "caller": "main",
+          "callee": "demo::runOne",
+          "lineNumber": 27
+        },
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "demo::runOne",
+          "lineNumber": 28
+        },
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 29
+        },
+        {
+          "caller": "main",
+          "callee": "demo::runOne",
+          "lineNumber": 29
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

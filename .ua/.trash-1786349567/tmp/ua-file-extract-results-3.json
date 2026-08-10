@@ -1,0 +1,147 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [
+    "CMakeLists.txt"
+  ],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": "PATCHES.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 75,
+      "nonEmptyLines": 47,
+      "sections": [
+        {
+          "heading": "对 AOSP 源码的本地改动",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. `frameworks/native/libs/binder/IPCThreadState.cpp`",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. `frameworks/native/libs/binder/ProcessState.cpp`",
+          "level": 2,
+          "line": 21
+        },
+        {
+          "heading": "被替换而非打补丁的依赖",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "`libselinux` → `compat/selinux_stub.cpp`",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "`libvintf` → `compat/vintf_stub.cpp`",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "构建垫片（未触碰任何 AOSP 源码）",
+          "level": 1,
+          "line": 59
+        },
+        {
+          "heading": "为什么必须用 clang（未改动这些代码）",
+          "level": 1,
+          "line": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 199,
+      "nonEmptyLines": 139,
+      "sections": [
+        {
+          "heading": "在普通 Linux 上跑 Android 12 Binder",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "快速开始",
+          "level": 2,
+          "line": 33
+        },
+        {
+          "heading": "手动构建",
+          "level": 3,
+          "line": 50
+        },
+        {
+          "heading": "demo 入口",
+          "level": 3,
+          "line": 71
+        },
+        {
+          "heading": "关于内核",
+          "level": 3,
+          "line": 86
+        },
+        {
+          "heading": "demo 覆盖了什么",
+          "level": 2,
+          "line": 103
+        },
+        {
+          "heading": "目录结构",
+          "level": 2,
+          "line": 118
+        },
+        {
+          "heading": "编译器：必须用 clang",
+          "level": 2,
+          "line": 143
+        },
+        {
+          "heading": "在 CLion 里运行",
+          "level": 2,
+          "line": 161
+        },
+        {
+          "heading": "重新生成 libbinder 的 AIDL",
+          "level": 2,
+          "line": 182
+        },
+        {
+          "heading": "已知限制",
+          "level": 2,
+          "line": 193
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 11
+      }
+    }
+  ]
+}

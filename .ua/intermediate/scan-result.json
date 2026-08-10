@@ -1,0 +1,277 @@
+{
+ "scriptCompleted": true,
+ "name": "android-binder-on-host",
+ "description": "把 AOSP android-12 的 binder IPC 栈（libbinder、servicemanager 及其依赖）用 CMake 基于 glibc 构建，直接在普通 Linux 宿主机上跑通内核真实的 binder 驱动——不用容器、不用虚拟机。事务真正经过 /dev/binder 与内核 binder_linux 驱动，与 Android 上是同一条路径。仓库包含宿主机兼容层（selinux/vintf 桩实现）、AOSP 源码补丁、AIDL 定义的 demo 服务与客户端，以及一键构建/配驱动/跑 demo 的脚本。",
+ "languages": [
+  "cpp",
+  "c",
+  "aidl",
+  "shell",
+  "cmake",
+  "markdown"
+ ],
+ "frameworks": [
+  "AOSP libbinder",
+  "Binder IPC",
+  "AIDL",
+  "CMake",
+  "Ninja",
+  "binderfs"
+ ],
+ "estimatedComplexity": "moderate",
+ "totalFiles": 31,
+ "filteredByIgnore": 530,
+ "stats": {
+  "filesScanned": 31,
+  "byCategory": {
+   "docs": 5,
+   "code": 24,
+   "script": 2
+  },
+  "byLanguage": {
+   "txt": 3,
+   "markdown": 2,
+   "c": 11,
+   "cpp": 9,
+   "aidl": 2,
+   "patch": 2,
+   "shell": 2
+  }
+ },
+ "contentDigest": "8bdcc4e24b1d017c8783e0181e25c2adcbb468d99789f7ff832409a4f0a59a66",
+ "files": [
+  {
+   "path": "CMakeLists.txt",
+   "language": "txt",
+   "sizeLines": 362,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "PATCHES.md",
+   "language": "markdown",
+   "sizeLines": 75,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "README.md",
+   "language": "markdown",
+   "sizeLines": 199,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "compat/CMakeLists.txt",
+   "language": "txt",
+   "sizeLines": 8,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "compat/include/aosp_host_compat.h",
+   "language": "c",
+   "sizeLines": 45,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/android.h",
+   "language": "c",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/avc.h",
+   "language": "c",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/label.h",
+   "language": "c",
+   "sizeLines": 25,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/selinux/selinux.h",
+   "language": "c",
+   "sizeLines": 64,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/stdatomic.h",
+   "language": "c",
+   "sizeLines": 107,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/vintf/VintfObject.h",
+   "language": "c",
+   "sizeLines": 90,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/include/vintf/constants.h",
+   "language": "c",
+   "sizeLines": 15,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/selinux_stub.cpp",
+   "language": "cpp",
+   "sizeLines": 143,
+   "fileCategory": "code"
+  },
+  {
+   "path": "compat/vintf_stub.cpp",
+   "language": "cpp",
+   "sizeLines": 108,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/binary_paths.cpp",
+   "language": "cpp",
+   "sizeLines": 50,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/binary_paths.h",
+   "language": "c",
+   "sizeLines": 19,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/child_process.cpp",
+   "language": "cpp",
+   "sizeLines": 51,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/child_process.h",
+   "language": "c",
+   "sizeLines": 32,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/runner.cpp",
+   "language": "cpp",
+   "sizeLines": 122,
+   "fileCategory": "code"
+  },
+  {
+   "path": "demo/runner.h",
+   "language": "c",
+   "sizeLines": 22,
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/CMakeLists.txt",
+   "language": "txt",
+   "sizeLines": 41,
+   "fileCategory": "docs"
+  },
+  {
+   "path": "examples/aidl/com/example/demo/IDemoCallback.aidl",
+   "language": "aidl",
+   "sizeLines": 10,
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/aidl/com/example/demo/IDemoService.aidl",
+   "language": "aidl",
+   "sizeLines": 36,
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/demo_client.cpp",
+   "language": "cpp",
+   "sizeLines": 171,
+   "fileCategory": "code"
+  },
+  {
+   "path": "examples/demo_service.cpp",
+   "language": "cpp",
+   "sizeLines": 258,
+   "fileCategory": "code"
+  },
+  {
+   "path": "main.cpp",
+   "language": "cpp",
+   "sizeLines": 33,
+   "fileCategory": "code"
+  },
+  {
+   "path": "patches/IPCThreadState.patch",
+   "language": "patch",
+   "sizeLines": 38,
+   "fileCategory": "code"
+  },
+  {
+   "path": "patches/ProcessState.patch",
+   "language": "patch",
+   "sizeLines": 51,
+   "fileCategory": "code"
+  },
+  {
+   "path": "scripts/run.sh",
+   "language": "shell",
+   "sizeLines": 95,
+   "fileCategory": "script"
+  },
+  {
+   "path": "scripts/setup-binder-host.sh",
+   "language": "shell",
+   "sizeLines": 104,
+   "fileCategory": "script"
+  },
+  {
+   "path": "tools/binderfs_ctl.cpp",
+   "language": "cpp",
+   "sizeLines": 71,
+   "fileCategory": "code"
+  }
+ ],
+ "importMap": {
+  "CMakeLists.txt": [],
+  "PATCHES.md": [],
+  "README.md": [],
+  "compat/CMakeLists.txt": [],
+  "compat/include/aosp_host_compat.h": [],
+  "compat/include/selinux/android.h": [],
+  "compat/include/selinux/avc.h": [],
+  "compat/include/selinux/label.h": [],
+  "compat/include/selinux/selinux.h": [],
+  "compat/include/stdatomic.h": [],
+  "compat/include/vintf/VintfObject.h": [],
+  "compat/include/vintf/constants.h": [],
+  "compat/selinux_stub.cpp": [],
+  "compat/vintf_stub.cpp": [],
+  "demo/binary_paths.cpp": [
+   "demo/binary_paths.h"
+  ],
+  "demo/binary_paths.h": [],
+  "demo/child_process.cpp": [
+   "demo/child_process.h"
+  ],
+  "demo/child_process.h": [],
+  "demo/runner.cpp": [
+   "demo/binary_paths.h",
+   "demo/child_process.h",
+   "demo/runner.h"
+  ],
+  "demo/runner.h": [],
+  "examples/CMakeLists.txt": [],
+  "examples/aidl/com/example/demo/IDemoCallback.aidl": [],
+  "examples/aidl/com/example/demo/IDemoService.aidl": [],
+  "examples/demo_client.cpp": [],
+  "examples/demo_service.cpp": [
+   "demo/binary_paths.h",
+   "demo/child_process.h"
+  ],
+  "main.cpp": [
+   "demo/runner.h"
+  ],
+  "patches/IPCThreadState.patch": [],
+  "patches/ProcessState.patch": [],
+  "scripts/run.sh": [],
+  "scripts/setup-binder-host.sh": [],
+  "tools/binderfs_ctl.cpp": []
+ },
+ "scannedAt": "2026-08-10T07:51:54.566506Z"
+}
